@@ -60,6 +60,10 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+end
+
 gem "vite_rails"
 gem "vite_ruby"
 gem "image_processing", "~> 1.2"
