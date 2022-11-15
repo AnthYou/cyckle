@@ -54,4 +54,12 @@ RSpec.describe User, type: :model do
         .is_less_than_or_equal_to(250)
     end
   end
+
+  describe 'flaky test' do
+    let(:user) { build(:user) }
+
+    it 'should fail', :flaky do
+      expect(user.first_name).to eq('test')
+    end
+  end
 end

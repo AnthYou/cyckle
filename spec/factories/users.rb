@@ -25,7 +25,18 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
+  sequence(:email) { |n| "user#{n}@example.com" }
+
   factory :user do
-    
+    email       { generate(:email) }
+    password    { '123456' }
+    first_name  { Faker::Name.first_name }
+    last_name   { Faker::Name.last_name }
+    gender      { User::GENDER.sample }
+    height      { (100..250).to_a.sample }
+    phone       { '0611121314' }
+    street      { '1 rue des Sagnes' }
+    postal_code { '75001' }
+    city        { 'Paris' }
   end
 end
