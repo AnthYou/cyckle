@@ -7,11 +7,15 @@ import Home from './pages/Home';
 const App = () => {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route index element={<Home />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col h-screen">
+        <NavBar />
+        <main className="container flex-1 mx-auto my-12 px-5 flex flex-col">
+          <Routes>
+            <Route index element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   )
 }
