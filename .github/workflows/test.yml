@@ -53,5 +53,3 @@ jobs:
           bundle exec rails db:create db:migrate
       - name: Run all rspec tests
         run: bundle exec rspec
-      - name: Run ruby linting
-        run: bundle exec rubocop --parallel
