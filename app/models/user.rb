@@ -33,10 +33,10 @@ class User < ApplicationRecord
 
   validates :first_name,  presence: true, length:       { minimum: 3 }
   validates :last_name,   presence: true, length:       { minimum: 2 }
+  validates :phone,       presence: true, length:       { minimum: 10, maximum: 15 }
   validates :gender,      presence: true, inclusion:    { in: GENDER }
-  validates :height,      presence: true, numericality: { only_integer: true, greater_than: 99, less_than: 251 }
+  validates :height,      presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 100, less_than_or_equal_to: 250 }
   validates :street,      presence: true
   validates :postal_code, presence: true
   validates :city,        presence: true
-  validates :phone,       presence: true, numericality: true, length: { minimum: 10, maximum: 15 }
 end
