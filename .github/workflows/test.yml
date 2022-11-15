@@ -51,5 +51,5 @@ jobs:
         run: |
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
-      - name: Run rspec tests
-        run: bundle exec rails rspec
+      - name: Run all rspec tests
+        run: bundle exec rspec
