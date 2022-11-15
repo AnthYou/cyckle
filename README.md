@@ -8,7 +8,7 @@ Cyckle is a side-project created by Batch 440 in order to experiment tech stacks
 ## Tech Stack
 - Ruby 3.0.1
 - Rails 7.0.4
-- Vite 3.2.0 with vite_rails gem
+- Vite 3.2.0 with `vite_rails` gem
 - React 18.2.0
 
 ## Want to dev?
