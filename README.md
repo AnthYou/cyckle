@@ -6,7 +6,7 @@
 Cyckle is a side-project created by Batch 440 in order to experiment tech stacks, architecture and processes. Its goal is to simplify bike renting without the need of a bike rental agency, so people can rent their bike between each other.
 
 ## Tech Stack
-- Ruby 3.0.1
+- Ruby 3.1.2
 - Rails 7.0.4
 - Vite 3.2.0 with `vite_rails` gem
 - React 18.2.0
