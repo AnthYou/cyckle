@@ -1,7 +1,50 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @import "./stylesheets/global";
 @import "./stylesheets/buttons";
+@import "./stylesheets/colors";
+@import "./stylesheets/fonts";
 
-@import "tailwindcss/utilities";
+// Global scss overwrites
+body {
+  background-color: $cream;
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+h4, h5, p, a {
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+h5 {
+  font-weight: 500;
+}
+
+a {
+  font-weight: 600;
+}
+
+p {
+  font-weight: 400;
+}

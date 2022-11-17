@@ -1,11 +1,15 @@
-import { Button } from "@mui/material";
 import React from "react";
+import Button from "../UI/Button";
 
 const Home = () => {
   return (
-    <div className="flex">
-      <h1 className="mr-5">Hello from home page</h1>
-      <Button variant="contained">Hello world!</Button>
+    <div>
+      <h1>Et si on louait un vélo ?</h1>
+      <p>Louer un vélo entre particuliers n'a jamais été aussi simple.</p>
+      <div className="flex">
+        <Button color="primary" className="mr-2">Je souhaite louer</Button>
+        <Button color="secondary">Je suis propriétaire</Button>
+      </div>
     </div>
   )
 };
