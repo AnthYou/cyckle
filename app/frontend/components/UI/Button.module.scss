@@ -1,0 +1,21 @@
+@import '../../entrypoints/stylesheets/colors';
+
+.Button {
+  color: #ffffff;
+  background-color: $main-green;
+  box-shadow: 0px 4px 4px rgba(148, 180, 159, 0.25);
+  border-radius: 10px;
+  padding: 11px 24px;
+}
+
+.primary {
+  background-color: $main-green;
+}
+
+.secondary {
+  background-color: $alt-green;
+}
+
+.alternate {
+  background-color: $orange;
+}
