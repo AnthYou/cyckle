@@ -1,12 +1,22 @@
 import React from "react";
 import classes from "./Button.module.scss";
 
-const Button = (props) => {
-  // type BtnColor = primary | secondary | alternate
-  const { color, children, className, btnProps } = props;
-  const btnClasses = `${classes.Button} ${classes[color]} ${className}`;
-
-  return <button className={btnClasses} {...btnProps}>{children}</button>
+type ButtonColor = "primary" | "secondary" | "alternate";
+interface ButtonProps {
+  color: ButtonColor;
+  className?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
 }
+
+const Button = ({ color, className, children }: ButtonProps): JSX.Element => {
+  let btnClasses = `${classes.Button} ${classes[color]}`;
+
+  if (className) {
+    btnClasses = `${classes.Button} ${classes[color]} ${className}`;
+  }
+
+  return <button className={btnClasses}>{children}</button>;
+};
 
 export default Button;
