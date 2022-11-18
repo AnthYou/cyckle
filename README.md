@@ -42,7 +42,7 @@ Please flag your tests as following:
 ### What should I enter as title and description for my PR?
 ```
 Title: ($TICKET_NUMBER) $TICKET_TITLE
-Description: A short sentence describing your changes
+Description: A short sentence describing your changes + add the link to your Jira ticket.
 ```
 
 ## Any questions?

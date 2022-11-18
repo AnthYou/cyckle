@@ -8,12 +8,17 @@
     "baseUrl": ".",
     "sourceMap": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
       "@/*": ["app/*"],
-      "@/component*": ["app/frontend/components/*"]
-    }
+      "@/components/*": ["app/frontend/components/*"]
+    },
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["app/**/*", "app/frontend/components/*"],
+  "include": ["app/**/*", "app/frontend/components/*", "declaration.d.ts"],
   "exclude": [
     "**/dist",
     "**/node_modules",
