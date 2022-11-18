@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../UI/Button";
 
 const Home = () => {
+  console.log('hello from home');
   return (
     <div>
       <h1>Et si on louait un vélo ?</h1>
