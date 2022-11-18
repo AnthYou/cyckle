@@ -18,7 +18,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["app/**/*", "app/frontend/components/*"],
+  "include": ["app/**/*", "app/frontend/components/*", "declaration.d.ts"],
   "exclude": [
     "**/dist",
     "**/node_modules",
