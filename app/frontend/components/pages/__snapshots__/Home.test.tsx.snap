@@ -1,0 +1,26 @@
+// Vitest Snapshot v1
+
+exports[`<Home /> > should render correctly 1`] = `
+<div>
+  <h1>
+    Et si on louait un vélo ?
+  </h1>
+  <p>
+    Louer un vélo entre particuliers n'a jamais été aussi simple.
+  </p>
+  <div
+    className="flex"
+  >
+    <button
+      className="_Button_4ea4ec _primary_4ea4ec mr-2"
+    >
+      Je souhaite louer
+    </button>
+    <button
+      className="_Button_4ea4ec _secondary_4ea4ec"
+    >
+      Je suis propriétaire
+    </button>
+  </div>
+</div>
+`;
