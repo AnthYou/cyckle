@@ -1,0 +1,10 @@
+@import '../../entrypoints/stylesheets/colors';
+
+.Footer {
+  background-color: $alt-green;
+  border-top: 5px solid $orange;
+
+  .logo {
+    flex-grow: 1;
+  }
+}
