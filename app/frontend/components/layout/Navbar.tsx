@@ -8,9 +8,9 @@ const NavBar = () => {
 
   return (
     <nav className="container flex flex-wrap items-center">
-      <div className="text-center text-xl font-semibold mb-0">
+      <h3 className="text-center text-xl font-semibold mb-0">
         <Link to="/" style={{fontFamily: 'Playfair-Display'}}>Cyckle</Link>
-      </div>
+      </h3>
       <ul className="ml-auto flex space-x-4">
         <li className="flex flex-col justify-center items-center">
           <NavLink
