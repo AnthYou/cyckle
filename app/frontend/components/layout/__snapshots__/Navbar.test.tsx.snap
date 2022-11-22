@@ -4,7 +4,7 @@ exports[`<NavBar /> > should render correctly 1`] = `
 <nav
   className="container flex flex-wrap items-center"
 >
-  <div
+  <h3
     className="text-center text-xl font-semibold mb-0"
   >
     <a
@@ -18,7 +18,7 @@ exports[`<NavBar /> > should render correctly 1`] = `
     >
       Cyckle
     </a>
-  </div>
+  </h3>
   <ul
     className="ml-auto flex space-x-4"
   >

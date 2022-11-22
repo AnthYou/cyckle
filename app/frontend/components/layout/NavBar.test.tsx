@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 
 describe("<NavBar />", () => {
   it("should render correctly", () => {
