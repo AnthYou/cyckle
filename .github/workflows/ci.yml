@@ -62,4 +62,4 @@ jobs:
         run: bundle exec rspec -f d --tag quarantine
         continue-on-error: true
       - name: Run Vitest tests
-        run: yarn run test
+        run: yarn test
