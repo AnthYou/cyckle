@@ -25,5 +25,5 @@ export default defineConfig({
         replacement: path.resolve(__dirname, "./app/frontend/entrypoints")
       }
     ]
-  },
+  }
 })
