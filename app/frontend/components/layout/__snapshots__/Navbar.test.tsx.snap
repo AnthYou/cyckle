@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`<NavBar /> > should render correctly 1`] = `
+exports[`<Navbar /> > should render correctly 1`] = `
 <nav
   className="container flex flex-wrap items-center"
 >

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../UI/Button";
 import { NavLink, Link } from "react-router-dom";
 
-const NavBar = () => {
+const Navbar = () => {
   const navLinkClasses = "text-gray-600 hover:text-sky-600 font-medium";
   let activeClassName = "underline";
 
@@ -30,4 +30,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;
