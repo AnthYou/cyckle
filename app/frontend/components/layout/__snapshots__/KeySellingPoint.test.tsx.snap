@@ -1,8 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`<KeySellingPoint /> > should render correctly 1`] = `
-<div>
-  <div>
+<div
+  className="flex flex-row-reverse items-center justify-between gap-4"
+>
+  <div
+    className="w-1/2"
+  >
     <h2>
       Test
     </h2>
@@ -12,6 +16,7 @@ exports[`<KeySellingPoint /> > should render correctly 1`] = `
   </div>
   <img
     alt="This is a blob."
+    className="w-2/5"
     src="/@fs/@/images/blob.svg"
   />
 </div>
