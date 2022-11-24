@@ -1,0 +1,45 @@
+// Vitest Snapshot v1
+
+exports[`<Navbar /> > should render correctly 1`] = `
+<nav
+  className="container flex flex-wrap items-center"
+>
+  <h3>
+    <a
+      href="/"
+      onClick={[Function]}
+      style={
+        {
+          "fontFamily": "Playfair-Display",
+        }
+      }
+    >
+      Cyckle
+    </a>
+  </h3>
+  <ul
+    className="ml-auto flex space-x-4"
+  >
+    <li
+      className="flex flex-col justify-center items-center"
+    >
+      <a
+        className="text-gray-600 hover:text-sky-600 font-medium undefined"
+        href="/about"
+        onClick={[Function]}
+      >
+        Comment ça marche
+      </a>
+    </li>
+    <li
+      className="flex flex-col justify-center items-center"
+    >
+      <button
+        className="_Button_4ea4ec _alternate_4ea4ec"
+      >
+        S'inscrire / se connecter
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

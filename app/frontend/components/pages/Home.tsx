@@ -1,17 +1,26 @@
 import React from "react";
-import Button from "../UI/Button";
+import Banner from "../layout/Banner";
+import { keySellingPoints } from "@/utils/constants";
+import KeySellingPoint from "../layout/KeySellingPoint";
 
 const Home = () => {
+  const sellingBlocks = keySellingPoints.map((ksp) => (
+    <KeySellingPoint
+      id={ksp.id}
+      key={ksp.id}
+      title={ksp.title}
+      content={ksp.content}
+      image={ksp.image}
+      alt={ksp.alt}
+    />
+  ));
+
   return (
-    <div>
-      <h1>Et si on louait un vélo ?</h1>
-      <p>Louer un vélo entre particuliers n'a jamais été aussi simple.</p>
-      <div className="flex">
-        <Button color="primary" className="mr-2">Je souhaite louer</Button>
-        <Button color="secondary">Je suis propriétaire</Button>
-      </div>
-    </div>
-  )
+    <>
+      <Banner />
+      {sellingBlocks}
+    </>
+  );
 };
 
 export default Home;

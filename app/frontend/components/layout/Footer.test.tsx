@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import Home from "./Home";
+import Footer from "./Footer";
 
-describe('<Home />', () => {
+describe('<Footer />', () => {
   it('should render correctly', () => {
-    const component = renderer.create(<Home />);
+    const component = renderer.create(<Footer />);
     const tree = component.toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import Home from "./Home";
+import Banner from "./Banner";
 
-describe('<Home />', () => {
+describe('<Banner />', () => {
   it('should render correctly', () => {
-    const component = renderer.create(<Home />);
+    const component = renderer.create(<Banner />);
     const tree = component.toJSON();
 
     expect(tree).toMatchSnapshot();

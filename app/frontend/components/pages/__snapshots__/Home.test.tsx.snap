@@ -1,0 +1,105 @@
+// Vitest Snapshot v1
+
+exports[`<Home /> > should render correctly 1`] = `
+[
+  <div
+    className="grid grid-cols-1 sm:grid-cols-2 items-center"
+  >
+    <div
+      className="w-full"
+    >
+      <h1>
+        Et si on louait un vélo ?
+      </h1>
+      <p>
+        Louer un vélo entre particuliers n'a jamais été aussi simple.
+      </p>
+      <div
+        className="flex"
+      >
+        <button
+          className="_Button_4ea4ec _primary_4ea4ec mr-2"
+        >
+          Je souhaite louer
+        </button>
+        <button
+          className="_Button_4ea4ec _secondary_4ea4ec"
+        >
+          Je suis propriétaire
+        </button>
+      </div>
+    </div>
+    <div
+      className="relative"
+    >
+      <img
+        alt="Cyclist"
+        className="w-full absolute"
+        src="/@fs/@/images/biking.svg"
+      />
+      <img
+        alt="Cyclist"
+        className="w-full"
+        src="/@fs/@/images/blob.svg"
+      />
+    </div>
+  </div>,
+  <div
+    className="flex flex-col sm:flex-row-reverse items-center justify-between mt-8 gap-4"
+  >
+    <div
+      className="w-full sm:w-1/2"
+    >
+      <h2>
+        Louez le vélo de vos envies
+      </h2>
+      <p>
+        Profitez d'une offre de vélos à louer riche : que vous recherchez un vélo de route, un vélo de ville, un VTC, un VTT ou encore un vélo à assistance électrique, trouvez votre compte parmi notre large offre de vélos proposée par nos membres.
+      </p>
+    </div>
+    <img
+      alt="Cycliste en ville."
+      className="w-full sm:w-2/5"
+      src="/@fs/@/images/ride_a_bicycle.svg"
+    />
+  </div>,
+  <div
+    className="flex flex-col sm:flex-row items-center justify-between mt-8 gap-4"
+  >
+    <div
+      className="w-full sm:w-1/2"
+    >
+      <h2>
+        Mettez en location votre vélo qui dort
+      </h2>
+      <p>
+        Vous avez un vélo dans votre garage mais vous ne vous en servez pas ? Gagnez de l'argent avec en le proposant à la location et faites en profiter à d'autres membres !
+      </p>
+    </div>
+    <img
+      alt="Homme avec ses sources de revenus."
+      className="w-full sm:w-2/5"
+      src="/@fs/@/images/mobile_payments.svg"
+    />
+  </div>,
+  <div
+    className="flex flex-col sm:flex-row-reverse items-center justify-between mt-8 gap-4"
+  >
+    <div
+      className="w-full sm:w-1/2"
+    >
+      <h2>
+        Alors, on va pédaler ?
+      </h2>
+      <p>
+        Plus d'excuses pour ne pas pédaler ! Louez facilement le vélo qui vous convient en quelques clics : créez un compte, entrez vos dates de location et choisissez le vélo de votre choix parmi la sélection disponible.
+      </p>
+    </div>
+    <img
+      alt="Cycliste avec une destination."
+      className="w-full sm:w-2/5"
+      src="/@fs/@/images/bike_ride.svg"
+    />
+  </div>,
+]
+`;
