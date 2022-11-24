@@ -3,7 +3,7 @@ class CreateBikes < ActiveRecord::Migration[7.0]
     create_table :bikes do |t|
       t.string :name
       t.string :gender
-      t.string :status
+      t.string :status, default: 'available'
       t.integer :min_days
       t.string :category
       t.text :description
