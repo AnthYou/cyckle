@@ -45,10 +45,10 @@ exports[`<Home /> > should render correctly 1`] = `
     </div>
   </div>,
   <div
-    className="flex flex-row-reverse items-center justify-between gap-4"
+    className="flex flex-col sm:flex-row-reverse items-center justify-between mt-8 gap-4"
   >
     <div
-      className="w-1/2"
+      className="w-full sm:w-1/2"
     >
       <h2>
         Louez le vélo de vos envies
@@ -59,15 +59,15 @@ exports[`<Home /> > should render correctly 1`] = `
     </div>
     <img
       alt="Cycliste en ville."
-      className="w-2/5"
+      className="w-full sm:w-2/5"
       src="/@fs/@/images/ride_a_bicycle.svg"
     />
   </div>,
   <div
-    className="flex flex-row items-center justify-between gap-4"
+    className="flex flex-col sm:flex-row items-center justify-between mt-8 gap-4"
   >
     <div
-      className="w-1/2"
+      className="w-full sm:w-1/2"
     >
       <h2>
         Mettez en location votre vélo qui dort
@@ -78,15 +78,15 @@ exports[`<Home /> > should render correctly 1`] = `
     </div>
     <img
       alt="Homme avec ses sources de revenus."
-      className="w-2/5"
+      className="w-full sm:w-2/5"
       src="/@fs/@/images/mobile_payments.svg"
     />
   </div>,
   <div
-    className="flex flex-row-reverse items-center justify-between gap-4"
+    className="flex flex-col sm:flex-row-reverse items-center justify-between mt-8 gap-4"
   >
     <div
-      className="w-1/2"
+      className="w-full sm:w-1/2"
     >
       <h2>
         Alors, on va pédaler ?
@@ -97,7 +97,7 @@ exports[`<Home /> > should render correctly 1`] = `
     </div>
     <img
       alt="Cycliste avec une destination."
-      className="w-2/5"
+      className="w-full sm:w-2/5"
       src="/@fs/@/images/bike_ride.svg"
     />
   </div>,
