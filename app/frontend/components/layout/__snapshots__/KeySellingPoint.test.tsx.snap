@@ -1,0 +1,18 @@
+// Vitest Snapshot v1
+
+exports[`<KeySellingPoint /> > should render correctly 1`] = `
+<div>
+  <div>
+    <h2>
+      Test
+    </h2>
+    <p>
+      Lorem ipsum
+    </p>
+  </div>
+  <img
+    alt="This is a blob."
+    src="/@fs/@/images/blob.svg"
+  />
+</div>
+`;
