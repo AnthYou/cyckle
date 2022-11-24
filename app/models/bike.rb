@@ -38,7 +38,7 @@
 #
 class Bike < ApplicationRecord
   CATEGORIES = %w[road city mountain gravel touring].freeze
-  GENDER = %w[male female unisex].freeze
+  GENDER     = %w[male female unisex].freeze
 
   monetize :price_per_day_cents
 
