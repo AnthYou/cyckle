@@ -4,9 +4,7 @@ exports[`<Navbar /> > should render correctly 1`] = `
 <nav
   className="container flex flex-wrap items-center"
 >
-  <h3
-    className="text-center text-xl font-semibold mb-0"
-  >
+  <h3>
     <a
       href="/"
       onClick={[Function]}

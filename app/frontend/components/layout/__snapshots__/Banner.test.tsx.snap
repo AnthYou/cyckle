@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`<Home /> > should render correctly 1`] = `
+exports[`<Banner /> > should render correctly 1`] = `
 <div
   className="grid grid-cols-1 sm:grid-cols-2 items-center"
 >

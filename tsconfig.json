@@ -13,7 +13,8 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
       "@/*": ["app/*"],
-      "@/components/*": ["app/frontend/components/*"]
+      "@/components/*": ["app/frontend/components/*"],
+      "@/images/*": ["app/frontend/images/*"]
     },
     "noEmit": true,
     "jsx": "react-jsx"
