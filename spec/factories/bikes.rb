@@ -58,6 +58,6 @@ FactoryBot.define do
     city { "MyString" }
     latitude { 1.5 }
     longitude { 1.5 }
-    owner
+    owner { association :user }
   end
 end

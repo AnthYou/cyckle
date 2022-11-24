@@ -39,15 +39,25 @@
 require 'rails_helper'
 
 RSpec.describe Bike, type: :model do
-  describe "associations" do
-    
+  describe 'associations' do
   end
 
-  describe "validations" do
-    
+  describe 'validations' do
   end
 
-  describe "instance methods" do
-    
+  describe 'instance methods' do
+    let(:bike) { build(:bike) }
+
+    describe '#address' do
+      before do
+        bike.street      = '1 rue du chemin vert'
+        bike.postal_code = '75011'
+        bike.city        = 'Paris'
+      end
+
+      it 'should return a valid address' do
+        expect(bike.address).to eq('1 rue du chemin vert, 75011, Paris')
+      end
+    end
   end
 end
