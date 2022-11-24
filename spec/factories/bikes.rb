@@ -38,26 +38,26 @@
 #
 FactoryBot.define do
   factory :bike do
-    name { "MyString" }
-    gender { "MyString" }
-    status { "MyString" }
-    min_days { 1 }
-    category { "MyString" }
-    description { "MyText" }
-    size { "MyString" }
-    brand { "MyString" }
-    model { "MyString" }
-    release_year { 1 }
-    color { "MyString" }
-    is_electric { false }
-    battery_life { 1 }
-    groupset { "MyString" }
-    weight { 1.5 }
-    street { "MyString" }
-    postal_code { "MyString" }
-    city { "MyString" }
-    latitude { 1.5 }
-    longitude { 1.5 }
+    name         { Faker::Company.name }
+    gender       { Bike::GENDER.sample }
+    status       { "available" }
+    min_days     { 1 }
+    category     { Bike::CATEGORIES.sample }
+    description  { Faker::Company.catch_phrase }
+    size         { "S" }
+    brand        { Faker::Company.name }
+    model        { Faker::Company.name }
+    release_year { 1999 }
+    color        { Faker::Color.color_name }
+    is_electric  { [true, false].sample }
+    battery_life { 10 }
+    groupset     { "2x9" }
+    weight       { 10.5 }
+    street       { Faker::Address.street_address }
+    postal_code  { Faker::Address.zip_code }
+    city         { Faker::Address.city }
+    latitude     { Faker::Address.latitude }
+    longitude    { Faker::Address.longitude }
     owner { association :user }
   end
 end

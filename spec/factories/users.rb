@@ -34,9 +34,9 @@ FactoryBot.define do
     last_name   { Faker::Name.last_name }
     gender      { User::GENDER.sample }
     height      { (100..250).to_a.sample }
-    phone       { '0611121314' }
-    street      { '1 rue des Sagnes' }
-    postal_code { '75001' }
-    city        { 'Paris' }
+    phone       { Faker::Number.leading_zero_number(digits: 10) }
+    street      { Faker::Address.street_address }
+    postal_code { Faker::Address.zip_code }
+    city        { Faker::Address.city }
   end
 end
