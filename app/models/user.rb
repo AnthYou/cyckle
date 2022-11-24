@@ -39,4 +39,6 @@ class User < ApplicationRecord
   validates :street,      presence: true
   validates :postal_code, presence: true
   validates :city,        presence: true
+
+  has_many :bikes, class_name: 'Bike', foreign_key: 'owner_id'
 end
