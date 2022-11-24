@@ -54,7 +54,7 @@ exports[`<Home /> > should render correctly 1`] = `
         Louez le vélo de vos envies
       </h2>
       <p>
-        Profitez d'une offre de vélos à louer riche.
+        Profitez d'une offre de vélos à louer riche : que vous recherchez un vélo de route, un vélo de ville, un VTC, un VTT ou encore un vélo à assistance électrique, trouvez votre compte parmi notre large offre de vélos proposée par nos membres.
       </p>
     </div>
     <img
@@ -72,7 +72,7 @@ exports[`<Home /> > should render correctly 1`] = `
         Mettez en location votre vélo qui dort
       </h2>
       <p>
-        Gagnez de l'argent avec votre vélo.
+        Vous avez un vélo dans votre garage mais vous ne vous en servez pas ? Gagnez de l'argent avec en le proposant à la location et faites en profiter à d'autres membres !
       </p>
     </div>
     <img

@@ -6,21 +6,21 @@ export const keySellingPoints = [
   {
     id: 1,
     title: "Louez le vélo de vos envies",
-    content: "Profitez d'une offre de vélos à louer riche.",
+    content: "Profitez d'une offre de vélos à louer riche : que vous recherchez un vélo de route, un vélo de ville, un VTC, un VTT ou encore un vélo à assistance électrique, trouvez votre compte parmi notre large offre de vélos proposée par nos membres.",
     image: RideABicycle,
     alt: "Cycliste en ville."
   },
   {
     id: 2,
     title: "Mettez en location votre vélo qui dort",
-    content: "Gagnez de l'argent avec votre vélo.",
+    content: "Vous avez un vélo dans votre garage mais vous ne vous en servez pas ? Gagnez de l'argent avec en le proposant à la location et faites en profiter à d'autres membres !",
     image: MobilePayments,
     alt: "Homme avec ses sources de revenus."
   },
   {
     id: 3,
     title: "Alors, on va pédaler ?",
-    content: "Louez facilement en quelques clics.",
+    content: "Louez facilement le vélo qui vous convient en quelques clics.",
     image: BikeRide,
     alt: "Cycliste avec une destination."
   },
