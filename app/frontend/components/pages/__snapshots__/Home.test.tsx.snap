@@ -58,6 +58,7 @@ exports[`<Home /> > should render correctly 1`] = `
       </p>
     </div>
     <img
+      alt="Cycliste en ville."
       className="w-2/5"
       src="/@fs/@/images/ride_a_bicycle.svg"
     />
@@ -76,6 +77,7 @@ exports[`<Home /> > should render correctly 1`] = `
       </p>
     </div>
     <img
+      alt="Homme avec ses sources de revenus."
       className="w-2/5"
       src="/@fs/@/images/mobile_payments.svg"
     />
@@ -90,10 +92,11 @@ exports[`<Home /> > should render correctly 1`] = `
         Alors, on va pédaler ?
       </h2>
       <p>
-        Louez facilement en quelques clics.
+        Plus d'excuses pour ne pas pédaler ! Louez facilement le vélo qui vous convient en quelques clics : créez un compte, entrez vos dates de location et choisissez le vélo de votre choix parmi la sélection disponible.
       </p>
     </div>
     <img
+      alt="Cycliste avec une destination."
       className="w-2/5"
       src="/@fs/@/images/bike_ride.svg"
     />

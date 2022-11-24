@@ -20,7 +20,7 @@ export const keySellingPoints = [
   {
     id: 3,
     title: "Alors, on va pédaler ?",
-    content: "Louez facilement le vélo qui vous convient en quelques clics.",
+    content: "Plus d'excuses pour ne pas pédaler ! Louez facilement le vélo qui vous convient en quelques clics : créez un compte, entrez vos dates de location et choisissez le vélo de votre choix parmi la sélection disponible.",
     image: BikeRide,
     alt: "Cycliste avec une destination."
   },
