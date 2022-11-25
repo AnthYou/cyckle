@@ -5,6 +5,7 @@ on: [push]
 
 jobs:
   test:
+    name: tests
     env:
       RAILS_ENV: test
       NODE_ENV: test
