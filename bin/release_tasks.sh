@@ -1,3 +1,3 @@
 #/bin/bash
-echo 'rails db:migrate'
-rails db:migrate
+echo 'rake db:migrate'
+rake db:migrate
