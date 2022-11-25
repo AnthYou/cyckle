@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_174252) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_175411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_174252) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bikes", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.string "status"
+    t.integer "min_days"
+    t.string "category"
+    t.text "description"
+    t.string "size"
+    t.string "brand"
+    t.string "model"
+    t.integer "release_year"
+    t.string "color"
+    t.boolean "is_electric"
+    t.integer "battery_life"
+    t.string "groupset"
+    t.float "weight"
+    t.string "street"
+    t.string "postal_code"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price_per_day_cents", default: 0, null: false
+    t.index ["owner_id"], name: "index_bikes_on_owner_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +92,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_174252) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bikes", "users", column: "owner_id"
 end
