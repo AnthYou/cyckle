@@ -12,7 +12,7 @@ bike_count = 0
 
 10.times do |n|
   user = User.new(
-    email: "user#{n}@cyckle.com",
+    email: "user#{n + 1}@cyckle.com",
     password: '123456',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -37,11 +37,12 @@ bike_count = 0
     groupset: '2x10',
     weight: 10.5,
     release_year: 2019,
-    gender: user.gender,
+    gender: Bike::GENDER.include?(user.gender) ? user.gender : 'unisex',
     street: user.street,
     postal_code: user.postal_code,
     city: user.city,
     min_days: [1, 2, 4, 5].sample,
+    price_per_day_cents: (1000..3000).to_a.sample,
     owner: user
   )
 
