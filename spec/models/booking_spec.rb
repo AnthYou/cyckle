@@ -28,6 +28,7 @@ RSpec.describe Booking, type: :model do
   describe 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:bike) }
+    it { should have_many(:reviews) }
   end
 
   describe 'validations' do
