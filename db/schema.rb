@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_175411) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_171315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_175411) do
     t.index ["owner_id"], name: "index_bikes_on_owner_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.string "status", default: "pending"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.bigint "bike_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_price_cents", default: 0, null: false
+    t.index ["bike_id"], name: "index_bookings_on_bike_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -93,4 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_175411) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bikes", "users", column: "owner_id"
+  add_foreign_key "bookings", "bikes"
+  add_foreign_key "bookings", "users"
 end
