@@ -41,6 +41,7 @@ require 'rails_helper'
 RSpec.describe Bike, type: :model do
   describe 'associations' do
     it { should belong_to(:owner) }
+    it { should have_many(:bookings) }
   end
 
   describe 'validations' do

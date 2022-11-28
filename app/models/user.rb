@@ -41,4 +41,5 @@ class User < ApplicationRecord
   validates :city,        presence: true
 
   has_many :bikes, class_name: 'Bike', foreign_key: 'owner_id'
+  has_many :bookings
 end

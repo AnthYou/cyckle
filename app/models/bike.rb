@@ -42,6 +42,8 @@ class Bike < ApplicationRecord
 
   monetize :price_per_day_cents
 
+  enum status: %i[available unavailable booked].index_with(&:to_s)
+
   validates :name,                presence: true
   validates :brand,               presence: true
   validates :category,            presence: true, inclusion: { in: CATEGORIES }
@@ -54,6 +56,8 @@ class Bike < ApplicationRecord
   validates :city,                presence: true, length: { minimum: 2 }
 
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id', required: true
+
+  has_many :bookings
 
   geocoded_by      :address
   after_validation :geocode, if: :will_save_change_to_street?
