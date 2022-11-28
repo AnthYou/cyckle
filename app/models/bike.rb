@@ -42,7 +42,7 @@ class Bike < ApplicationRecord
 
   monetize :price_per_day_cents
 
-  enum status: %i[available booked].index_with(&:to_s)
+  enum status: %i[available unavailable booked].index_with(&:to_s)
 
   validates :name,                presence: true
   validates :brand,               presence: true
