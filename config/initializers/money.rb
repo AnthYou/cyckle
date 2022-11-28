@@ -3,6 +3,10 @@
 # https://github.com/RubyMoney/money#deprecation
 Money.locale_backend = :currency
 
+# The default rounding mode will change from `ROUND_HALF_EVEN` to `ROUND_HALF_UP` in the next major release.
+# Set it explicitly using `Money.rounding_mode=` to avoid potential problems.
+Money.rounding_mode = BigDecimal::ROUND_HALF_EVEN
+
 MoneyRails.configure do |config|
 
   # To set the default currency

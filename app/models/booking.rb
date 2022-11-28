@@ -23,9 +23,14 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Booking < ApplicationRecord
-  monetize :price_per_day_cents
+  monetize :total_price_cents
+
   enum status: %i[pending accepted refused canceled].index_with(&:to_s)
 
   belongs_to :user
   belongs_to :bike
+
+  validates :start_date,        presence: true
+  validates :end_date,          presence: true
+  validates :total_price_cents, presence: true
 end
