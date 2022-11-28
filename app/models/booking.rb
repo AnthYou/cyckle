@@ -30,6 +30,8 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :bike
 
+  has_many :reviews
+
   validates :start_date,        presence: true
   validates :end_date,          presence: true
   validates :total_price_cents, presence: true
