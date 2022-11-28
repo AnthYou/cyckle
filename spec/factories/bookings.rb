@@ -24,11 +24,11 @@
 #
 FactoryBot.define do
   factory :booking do
-    status { "MyString" }
-    price { 1 }
-    start_date { "2022-11-28" }
-    end_date { "2022-11-28" }
-    user { nil }
-    bike { nil }
+    status            { 'pending' }
+    total_price_cents { 10_000 }
+    start_date        { Date.today + 10.days }
+    end_date          { Date.today + 15.days }
+    user              { association :user }
+    bike              { association :bike }
   end
 end

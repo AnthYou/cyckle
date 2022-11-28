@@ -38,26 +38,27 @@
 #
 FactoryBot.define do
   factory :bike do
-    name         { Faker::Company.name }
-    gender       { Bike::GENDER.sample }
-    status       { 'available' }
-    min_days     { [1, 2, 4, 5].sample }
-    category     { Bike::CATEGORIES.sample }
-    description  { Faker::Company.catch_phrase }
-    size         { 'S' }
-    brand        { Faker::Company.name }
-    model        { Faker::Company.name }
-    release_year { 1999 }
-    color        { Faker::Color.color_name }
-    is_electric  { [true, false].sample }
-    battery_life { 10 }
-    groupset     { '2x9' }
-    weight       { 10.5 }
-    street       { Faker::Address.street_address }
-    postal_code  { Faker::Address.zip_code }
-    city         { Faker::Address.city }
-    latitude     { Faker::Address.latitude }
-    longitude    { Faker::Address.longitude }
-    owner        { association :user }
+    name                { Faker::Company.name }
+    gender              { Bike::GENDER.sample }
+    status              { 'available' }
+    min_days            { [1, 2, 4, 5].sample }
+    price_per_day_cents { (1000..4000).to_a.sample }
+    category            { Bike::CATEGORIES.sample }
+    description         { Faker::Company.catch_phrase }
+    size                { 'S' }
+    brand               { Faker::Company.name }
+    model               { Faker::Company.name }
+    release_year        { 1999 }
+    color               { Faker::Color.color_name }
+    is_electric         { [true, false].sample }
+    battery_life        { 10 }
+    groupset            { '2x9' }
+    weight              { 10.5 }
+    street              { Faker::Address.street_address }
+    postal_code         { Faker::Address.zip_code }
+    city                { Faker::Address.city }
+    latitude            { Faker::Address.latitude }
+    longitude           { Faker::Address.longitude }
+    owner               { association :user }
   end
 end
