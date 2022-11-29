@@ -31,6 +31,7 @@ class Booking < ApplicationRecord
   belongs_to :bike
 
   has_many :reviews
+  has_many :notifications
 
   validates :start_date,        presence: true
   validates :end_date,          presence: true
