@@ -24,4 +24,8 @@
 class Notification < ApplicationRecord
   belongs_to :booking
   belongs_to :receiver, class_name: 'User', foreign_key: 'receiver_id', required: true
+
+  validates :notification_type, presence: true
+  validates :content,           presence: true
+  validates :read,              presence: true
 end
