@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :message do
-    content { "MyText" }
-    author { nil }
-    booking { nil }
+    content { 'Lorem ipsum dolor sit amet.' }
+    author  { association :user }
+    booking { association :booking }
   end
 end
