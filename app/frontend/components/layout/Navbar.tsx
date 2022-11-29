@@ -25,7 +25,9 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className="flex flex-col justify-center items-center">
-          <Button color="alternate">S'inscrire / se connecter</Button>
+          <Link to="/signup">
+            <Button color="alternate">S'inscrire / se connecter</Button>
+          </Link>
         </li>
       </ul>
     </nav>
