@@ -40,7 +40,8 @@ class User < ApplicationRecord
   validates :postal_code, presence: true
   validates :city,        presence: true
 
-  has_many :bikes, class_name: 'Bike', foreign_key: 'owner_id'
+  has_many :bikes,         class_name: 'Bike',         foreign_key: 'owner_id'
+  has_many :notifications, class_name: 'Notification', foreign_key: 'receiver_id'
   has_many :bookings
   has_many :reviews
 end
