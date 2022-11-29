@@ -42,6 +42,7 @@ class User < ApplicationRecord
 
   has_many :bikes,         class_name: 'Bike',         foreign_key: 'owner_id'
   has_many :notifications, class_name: 'Notification', foreign_key: 'receiver_id'
+  has_many :messages,      class_name: 'Message',      foreign_key: 'author_id'
   has_many :bookings
   has_many :reviews
 end

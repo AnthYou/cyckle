@@ -32,6 +32,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:bookings) }
     it { should have_many(:reviews) }
     it { should have_many(:notifications) }
+    it { should have_many(:messages) }
   end
 
   describe 'validations' do

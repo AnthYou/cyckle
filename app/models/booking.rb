@@ -32,6 +32,7 @@ class Booking < ApplicationRecord
 
   has_many :reviews
   has_many :notifications
+  has_many :messages
 
   validates :start_date,        presence: true
   validates :end_date,          presence: true
