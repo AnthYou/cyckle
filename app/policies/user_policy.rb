@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
     # end
   end
 
-  def register?
+  def create?
     true
   end
 
