@@ -8,6 +8,7 @@ interface ButtonProps {
   className?: string;
   children?: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -15,6 +16,7 @@ const Button = ({
   className,
   children,
   onClick,
+  disabled,
 }: ButtonProps): JSX.Element => {
   let btnClasses = `${classes.Button} ${classes[color]}`;
 
@@ -23,7 +25,7 @@ const Button = ({
   }
 
   return (
-    <button className={btnClasses} onClick={onClick}>
+    <button className={btnClasses} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

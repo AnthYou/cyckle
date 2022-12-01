@@ -90,9 +90,10 @@ exports[`<Signup /> > should render correctly 1`] = `
         </label>
         <input
           id="height"
+          max="200"
+          min="100"
           name="height"
           onChange={[Function]}
-          placeholder="180"
           required={true}
           type="number"
           value={150}
@@ -175,6 +176,7 @@ exports[`<Signup /> > should render correctly 1`] = `
       >
         <button
           className="_Button_4ea4ec _primary_4ea4ec mt-5"
+          disabled={true}
         >
           S'inscrire
         </button>

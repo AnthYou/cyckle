@@ -7,7 +7,9 @@ interface InputProps {
   type: React.HTMLInputTypeAttribute;
   label: string;
   name: string;
-  placeholder: string;
+  min?: string;
+  max?: string;
+  placeholder?: string;
   value: string | number | readonly string[] | undefined;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
   required?: boolean;
@@ -15,7 +17,18 @@ interface InputProps {
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { id, type, label, name, placeholder, value, onChange, required }: InputProps,
+    {
+      id,
+      type,
+      label,
+      name,
+      min,
+      max,
+      placeholder,
+      value,
+      onChange,
+      required,
+    }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
@@ -26,6 +39,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           name={name}
           id={id}
           placeholder={placeholder}
+          min={min}
+          max={max}
           value={value}
           onChange={onChange}
           ref={ref}

@@ -37,6 +37,16 @@ const Signup = () => {
 
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
 
+  const isPasswordValid =
+    formValues.password === formValues.passwordConfirmation &&
+    formValues.password.length >= 6;
+  const areMinCharsValid =
+    formValues.firstName.length >= 3 &&
+    formValues.lastName.length >= 2 &&
+    formValues.phone.length >= 10;
+  const isHeightValid = formValues.height >= 100 && formValues.height <= 200;
+  const isValid = isPasswordValid && areMinCharsValid && isHeightValid;
+
   const handleInputChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -97,7 +107,8 @@ const Signup = () => {
             type="number"
             label="Taille (en cm)"
             name="height"
-            placeholder="180"
+            min="100"
+            max="200"
             value={formValues.height}
             onChange={handleInputChange}
             required={true}
@@ -143,7 +154,7 @@ const Signup = () => {
             required={true}
           />
           <div className="flex flex-col items-center justify-center gap-4">
-            <Button color="primary" className="mt-5">
+            <Button color="primary" className="mt-5" disabled={!isValid}>
               S'inscrire
             </Button>
             <p>
