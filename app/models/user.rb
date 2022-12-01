@@ -41,9 +41,6 @@ class User < ApplicationRecord
   validates :phone,       presence: true, length:       { minimum: 10, maximum: 15 }
   validates :gender,      presence: true, inclusion:    { in: GENDER }
   validates :height,      presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 100, less_than_or_equal_to: 250 }
-  validates :street,      presence: true
-  validates :postal_code, presence: true
-  validates :city,        presence: true
 
   has_many :bikes,         class_name: 'Bike',         foreign_key: 'owner_id'
   has_many :notifications, class_name: 'Notification', foreign_key: 'receiver_id'

@@ -25,6 +25,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="firstName"
           onChange={[Function]}
           placeholder="Raymond"
+          required={true}
           type="text"
           value=""
         />
@@ -42,6 +43,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="lastName"
           onChange={[Function]}
           placeholder="Poulidor"
+          required={true}
           type="text"
           value=""
         />
@@ -58,6 +60,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           id="gender"
           name="gender"
           onChange={[Function]}
+          required={true}
           value="male"
         >
           <option
@@ -90,6 +93,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="height"
           onChange={[Function]}
           placeholder="180"
+          required={true}
           type="number"
           value={150}
         />
@@ -107,7 +111,26 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="email"
           onChange={[Function]}
           placeholder="raymond@cyckle.com"
+          required={true}
           type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="_Input_658f0a"
+      >
+        <label
+          htmlFor="phone"
+        >
+          Numéro de téléphone
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          onChange={[Function]}
+          placeholder="06 01 02 03 04"
+          required={true}
+          type="tel"
           value=""
         />
       </div>
@@ -124,6 +147,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="password"
           onChange={[Function]}
           placeholder="******"
+          required={true}
           type="password"
           value=""
         />
@@ -141,6 +165,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           name="passwordConfirmation"
           onChange={[Function]}
           placeholder="******"
+          required={true}
           type="password"
           value=""
         />

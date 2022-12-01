@@ -10,11 +10,12 @@ interface InputProps {
   placeholder: string;
   value: string | number | readonly string[] | undefined;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  required?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { id, type, label, name, placeholder, value, onChange }: InputProps,
+    { id, type, label, name, placeholder, value, onChange, required }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
@@ -28,6 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           value={value}
           onChange={onChange}
           ref={ref}
+          required={required}
         />
       </div>
     );

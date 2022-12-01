@@ -14,9 +14,6 @@ interface SignUpFormTypes {
   lastName: string;
   gender: string;
   height: number;
-  street: string;
-  postalCode: string;
-  city: string;
   phone: string;
 }
 
@@ -29,31 +26,31 @@ const Signup = () => {
     lastName: "",
     gender: "male",
     height: 150,
-    street: "",
-    postalCode: "",
-    city: "",
-    phone: ""
+    phone: "",
   };
 
   const genderOptions: SelectOptions[] = [
     { id: 1, label: "Homme", value: "male" },
     { id: 2, label: "Femme", value: "female" },
-    { id: 3, label: "Non-binaire", value: "non-binary" }
-  ]
+    { id: 3, label: "Non-binaire", value: "non-binary" },
+  ];
 
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+  const handleInputChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    
-    setFormValues(prevValues => {
+
+    setFormValues((prevValues) => {
       return {
         ...prevValues,
-        [name]: value
-      }
+        [name]: value,
+      };
     });
   };
-
 
   const handleForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -74,6 +71,7 @@ const Signup = () => {
             placeholder="Raymond"
             value={formValues.firstName}
             onChange={handleInputChange}
+            required={true}
           />
           <Input
             id="lastName"
@@ -83,8 +81,17 @@ const Signup = () => {
             placeholder="Poulidor"
             value={formValues.lastName}
             onChange={handleInputChange}
+            required={true}
           />
-          <Select id="gender" name="gender" label="Genre" options={genderOptions} value={formValues.gender} onChange={handleInputChange} />
+          <Select
+            id="gender"
+            name="gender"
+            label="Genre"
+            options={genderOptions}
+            value={formValues.gender}
+            onChange={handleInputChange}
+            required={true}
+          />
           <Input
             id="height"
             type="number"
@@ -93,6 +100,7 @@ const Signup = () => {
             placeholder="180"
             value={formValues.height}
             onChange={handleInputChange}
+            required={true}
           />
           <Input
             id="email"
@@ -102,6 +110,17 @@ const Signup = () => {
             value={formValues.email}
             onChange={handleInputChange}
             placeholder="raymond@cyckle.com"
+            required={true}
+          />
+          <Input
+            id="phone"
+            type="tel"
+            label="Numéro de téléphone"
+            name="phone"
+            value={formValues.phone}
+            onChange={handleInputChange}
+            placeholder="06 01 02 03 04"
+            required={true}
           />
           <Input
             id="password"
@@ -111,6 +130,7 @@ const Signup = () => {
             placeholder="******"
             value={formValues.password}
             onChange={handleInputChange}
+            required={true}
           />
           <Input
             id="passwordConfirmation"
@@ -120,6 +140,7 @@ const Signup = () => {
             placeholder="******"
             value={formValues.passwordConfirmation}
             onChange={handleInputChange}
+            required={true}
           />
           <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5">
