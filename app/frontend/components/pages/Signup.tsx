@@ -62,10 +62,43 @@ const Signup = () => {
     });
   };
 
-  const handleForm = (event: React.FormEvent) => {
+  const handleForm = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    console.log(formValues);
+    const formParams = {
+      user: {
+        first_name: formValues.firstName,
+        last_name: formValues.lastName,
+        email: formValues.email,
+        gender: formValues.gender,
+        height: formValues.height,
+        phone: formValues.phone,
+        password: formValues.password,
+      },
+    };
+
+    try {
+      const response = await fetch("/api/v1/signup", {
+        method: "POST",
+        body: JSON.stringify(formParams),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const token = response.headers.get("Authorization");
+
+      if (token) {
+        localStorage.setItem("token", token);
+        console.log(token);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
