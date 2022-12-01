@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
@@ -37,10 +38,11 @@ const Signup = () => {
             name="password_confirmation"
             placeholder="******"
           />
-          <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5">
               S'inscrire
             </Button>
+            <p>Vous avez déjà un compte ? <Link to="/">Identifiez-vous</Link></p>
           </div>
         </form>
         <img

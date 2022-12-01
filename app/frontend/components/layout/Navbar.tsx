@@ -9,7 +9,10 @@ const Navbar = () => {
   return (
     <nav className="container flex flex-wrap items-center">
       <h3>
-        <Link to="/" style={{ fontFamily: "Playfair-Display" }}>
+        <Link
+          to="/"
+          style={{ fontFamily: "Playfair-Display", color: "#373737" }}
+        >
           Cyckle
         </Link>
       </h3>
