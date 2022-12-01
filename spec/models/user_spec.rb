@@ -9,6 +9,7 @@
 #  first_name             :string
 #  gender                 :string
 #  height                 :integer
+#  jti                    :string           not null
 #  last_name              :string
 #  phone                  :string
 #  postal_code            :string
@@ -22,6 +23,7 @@
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_jti                   (jti) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 require 'rails_helper'

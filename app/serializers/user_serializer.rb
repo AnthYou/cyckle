@@ -26,19 +26,11 @@
 #  index_users_on_jti                   (jti) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-FactoryBot.define do
-  sequence(:email) { |n| "user#{n}@example.com" }
+class UserSerializer
+  include FastJsonapi::ObjectSerializer
+  attributes :id, :email, :created_at
 
-  factory :user do
-    email       { generate(:email) }
-    password    { '123456' }
-    first_name  { Faker::Name.first_name }
-    last_name   { Faker::Name.last_name }
-    gender      { User::GENDER.sample }
-    height      { (100..250).to_a.sample }
-    phone       { Faker::Number.leading_zero_number(digits: 10) }
-    street      { Faker::Address.street_address }
-    postal_code { Faker::Address.zip_code }
-    city        { Faker::Address.city }
+  attribute :created_date do |user|
+    user && user.created_at.strftime('%d/%m/%Y')
   end
 end

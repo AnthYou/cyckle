@@ -9,6 +9,7 @@
 #  first_name             :string
 #  gender                 :string
 #  height                 :integer
+#  jti                    :string           not null
 #  last_name              :string
 #  phone                  :string
 #  postal_code            :string
@@ -22,14 +23,18 @@
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_jti                   (jti) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+
   GENDER = %w[male female non-binary].freeze
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 
   validates :first_name,  presence: true, length:       { minimum: 3 }
   validates :last_name,   presence: true, length:       { minimum: 2 }
