@@ -16,6 +16,88 @@ exports[`<Signup /> > should render correctly 1`] = `
         className="_Input_658f0a"
       >
         <label
+          htmlFor="firstName"
+        >
+          Prénom
+        </label>
+        <input
+          id="firstName"
+          name="firstName"
+          onChange={[Function]}
+          placeholder="Raymond"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="_Input_658f0a"
+      >
+        <label
+          htmlFor="lastName"
+        >
+          Nom de famille
+        </label>
+        <input
+          id="lastName"
+          name="lastName"
+          onChange={[Function]}
+          placeholder="Poulidor"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="_Select_dd8b4d"
+      >
+        <label
+          htmlFor="gender"
+        >
+          Genre
+        </label>
+        <select
+          id="gender"
+          name="gender"
+          onChange={[Function]}
+          value="male"
+        >
+          <option
+            value="male"
+          >
+            Homme
+          </option>
+          <option
+            value="female"
+          >
+            Femme
+          </option>
+          <option
+            value="non-binary"
+          >
+            Non-binaire
+          </option>
+        </select>
+      </div>
+      <div
+        className="_Input_658f0a"
+      >
+        <label
+          htmlFor="height"
+        >
+          Taille (en cm)
+        </label>
+        <input
+          id="height"
+          name="height"
+          onChange={[Function]}
+          placeholder="180"
+          type="number"
+          value={150}
+        />
+      </div>
+      <div
+        className="_Input_658f0a"
+      >
+        <label
           htmlFor="email"
         >
           Email
@@ -23,8 +105,10 @@ exports[`<Signup /> > should render correctly 1`] = `
         <input
           id="email"
           name="email"
+          onChange={[Function]}
           placeholder="raymond@cyckle.com"
           type="text"
+          value=""
         />
       </div>
       <div
@@ -38,23 +122,27 @@ exports[`<Signup /> > should render correctly 1`] = `
         <input
           id="password"
           name="password"
+          onChange={[Function]}
           placeholder="******"
           type="password"
+          value=""
         />
       </div>
       <div
         className="_Input_658f0a"
       >
         <label
-          htmlFor="password_confirmation"
+          htmlFor="passwordConfirmation"
         >
           Confirmation du mot de passe
         </label>
         <input
-          id="password_confirmation"
-          name="password_confirmation"
+          id="passwordConfirmation"
+          name="passwordConfirmation"
+          onChange={[Function]}
           placeholder="******"
           type="password"
+          value=""
         />
       </div>
       <div

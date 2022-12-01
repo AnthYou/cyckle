@@ -1,4 +1,3 @@
-import { InputUnstyledTypeMap } from "@mui/base";
 import React, { ForwardedRef } from "react";
 
 import classes from "./Input.module.scss";
@@ -9,11 +8,13 @@ interface InputProps {
   label: string;
   name: string;
   placeholder: string;
+  value: string | number | readonly string[] | undefined;
+  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { id, type, label, name, placeholder }: InputProps,
+    { id, type, label, name, placeholder, value, onChange }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
@@ -24,6 +25,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           name={name}
           id={id}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
           ref={ref}
         />
       </div>
