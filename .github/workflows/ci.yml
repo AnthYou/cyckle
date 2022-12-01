@@ -8,6 +8,7 @@ jobs:
     env:
       RAILS_ENV: test
       NODE_ENV: test
+      JWT_SECRET_KEY: 73bc12b7555ceeba4e41d7717906ca8b5ed540b190310db8f23d450a596440a79d90179cd9b584e213d42cdd2434dd97003f45fd255aa7c84f85a012f060adf0
     runs-on: ubuntu-latest # runner
     services:
       # Label used to access the service container
