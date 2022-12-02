@@ -183,7 +183,7 @@ exports[`<Signup /> > should render correctly 1`] = `
         <p>
           Vous avez déjà un compte ? 
           <a
-            href="/"
+            href="/login"
             onClick={[Function]}
           >
             Identifiez-vous

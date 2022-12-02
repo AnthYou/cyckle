@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import { RootState } from "../store";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import { RootState } from "../store";
+import Login from "./pages/Login";
 
 const App = () => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
@@ -17,6 +19,7 @@ const App = () => {
       <main className="container flex-1 mx-auto my-12">
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>

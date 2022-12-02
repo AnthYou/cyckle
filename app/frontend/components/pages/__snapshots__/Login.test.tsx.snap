@@ -1,0 +1,78 @@
+// Vitest Snapshot v1
+
+exports[`<Login /> > should render correctly 1`] = `
+[
+  <h1>
+    Connectez-vous
+  </h1>,
+  <div
+    className="flex flex-col sm:flex-row items-center justify-between gap-4"
+  >
+    <form
+      className="w-full sm:w-1/2"
+      onSubmit={[Function]}
+    >
+      <div
+        className="_Input_658f0a"
+      >
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="raymond@cyckle.com"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="_Input_658f0a"
+      >
+        <label
+          htmlFor="password"
+        >
+          Mot de passe
+        </label>
+        <input
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="******"
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="flex flex-col items-center justify-center gap-4"
+      >
+        <button
+          className="_Button_4ea4ec _primary_4ea4ec mt-5"
+          disabled={true}
+        >
+          S'inscrire
+        </button>
+        <p>
+          Vous n'avez pas encore de compte ? 
+          <a
+            href="/signup"
+            onClick={[Function]}
+          >
+            Inscrivez-vous
+          </a>
+        </p>
+      </div>
+    </form>
+    <img
+      alt="A man opening a door."
+      className="w-full sm:w-1/2"
+      src="/@fs/@/images/login.svg"
+    />
+  </div>,
+]
+`;

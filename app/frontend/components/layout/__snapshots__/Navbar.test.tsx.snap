@@ -36,7 +36,7 @@ exports[`<Navbar /> > should render correctly 1`] = `
       className="flex flex-col justify-center items-center"
     >
       <a
-        href="/signup"
+        href="/login"
         onClick={[Function]}
       >
         <button

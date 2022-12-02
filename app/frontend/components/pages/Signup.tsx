@@ -19,24 +19,24 @@ interface SignUpFormTypes {
   phone: string;
 }
 
+const defaultValues: SignUpFormTypes = {
+  email: "",
+  password: "",
+  passwordConfirmation: "",
+  firstName: "",
+  lastName: "",
+  gender: "male",
+  height: 150,
+  phone: "",
+};
+
+const genderOptions: SelectOptions[] = [
+  { id: 1, label: "Homme", value: "male" },
+  { id: 2, label: "Femme", value: "female" },
+  { id: 3, label: "Non-binaire", value: "non-binary" },
+];
+
 const Signup = () => {
-  const defaultValues: SignUpFormTypes = {
-    email: "",
-    password: "",
-    passwordConfirmation: "",
-    firstName: "",
-    lastName: "",
-    gender: "male",
-    height: 150,
-    phone: "",
-  };
-
-  const genderOptions: SelectOptions[] = [
-    { id: 1, label: "Homme", value: "male" },
-    { id: 2, label: "Femme", value: "female" },
-    { id: 3, label: "Non-binaire", value: "non-binary" },
-  ];
-
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
   const dispatch = useDispatch();
 
@@ -195,7 +195,7 @@ const Signup = () => {
               S'inscrire
             </Button>
             <p>
-              Vous avez déjà un compte ? <Link to="#">Identifiez-vous</Link>
+              Vous avez déjà un compte ? <Link to="/login">Identifiez-vous</Link>
             </p>
           </div>
         </form>
