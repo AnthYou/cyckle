@@ -100,12 +100,18 @@ export const loginUser = (credentials: Credentials) => {
 export const logoutUser = () => {
   return async (dispatch: AppDispatch) => {
     try {
+      const token = getToken();
+
+      if (!token) {
+        return;
+      }
+
       const response = await fetch("/api/v1/logout", {
         method: "DELETE",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: getToken(),
+          Authorization: token,
         },
       });
 
