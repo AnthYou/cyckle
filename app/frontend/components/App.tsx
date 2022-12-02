@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { RootState } from "../store";
 import Footer from "./layout/Footer";
@@ -8,19 +8,27 @@ import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import { checkAuth } from "../store/actions/auth";
 
 const App = () => {
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      {isAuthenticated && <p>Logged in!</p>}
+      {isAuthenticated && <p className="text-center">Logged in!</p>}
       <main className="container flex-1 mx-auto my-12">
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={isAuthenticated ? <Navigate replace to="/" /> : <Login />} />
+          <Route path="/signup" element={isAuthenticated ? <Navigate replace to="/" /> : <Signup />} />
         </Routes>
       </main>
       <Footer />

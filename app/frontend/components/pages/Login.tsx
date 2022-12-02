@@ -1,26 +1,28 @@
-import React, { InputHTMLAttributes, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
+import { Credentials, loginUser } from '@/store/actions/auth';
+import { useDispatch } from 'react-redux';
 
-interface LoginFormTypes {
-  email: string;
-  password: string;
-}
-
-const defaultValues: LoginFormTypes = {
+const defaultValues: Credentials = {
   email: "",
   password: ""
 };
 
 const Login = () => {
-  const [formValues, setFormValues] = useState<LoginFormTypes>(defaultValues);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [formValues, setFormValues] = useState<Credentials>(defaultValues);
   const isValid = formValues.email.includes("@") && formValues.password.length >= 6;
 
-  const handleForm = () => {
-    console.log("Form submitted");
+  const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    dispatch(loginUser(formValues));
+    navigate("/");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +40,7 @@ const Login = () => {
     <>
       <h1>Connectez-vous</h1>
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <form onSubmit={handleForm} className="w-full sm:w-1/2">
+        <form onSubmit={handleFormSubmit} className="w-full sm:w-1/2">
           <Input
             id="email"
             type="text"

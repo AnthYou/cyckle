@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authActions } from "@/store/auth";
+import { authActions } from "@/store/slices/auth-slice";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
