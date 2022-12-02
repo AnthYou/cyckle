@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/store/auth";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
@@ -36,6 +38,7 @@ const Signup = () => {
   ];
 
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
+  const dispatch = useDispatch();
 
   const isPasswordValid =
     formValues.password === formValues.passwordConfirmation &&
@@ -94,6 +97,7 @@ const Signup = () => {
 
       if (token) {
         localStorage.setItem("token", token);
+        dispatch(authActions.login(token));
         console.log(token);
       }
     } catch (error) {
