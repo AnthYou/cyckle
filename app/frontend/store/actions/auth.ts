@@ -39,6 +39,7 @@ export interface Credentials {
 }
 
 export const signupUser = (credentials: Credentials) => {
+  // TO DO
   // return (dispatch: AppDispatch) => {
   //   return fetch("/api/v1/signup", {
   //     method: "POST",
