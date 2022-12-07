@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
 import { Credentials, loginUser } from '@/store/actions/auth';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/hooks/redux';
 
 const defaultValues: Credentials = {
   email: "",
@@ -13,7 +13,7 @@ const defaultValues: Credentials = {
 };
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState<Credentials>(defaultValues);
   const isValid = formValues.email.includes("@") && formValues.password.length >= 6;

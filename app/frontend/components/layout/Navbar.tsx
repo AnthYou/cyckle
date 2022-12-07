@@ -1,14 +1,14 @@
 import React from "react";
 import Button from "../UI/Button";
 import { NavLink, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/index";
 import { logoutUser } from "@/store/actions/auth";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navLinkClasses = "text-gray-600 hover:text-sky-600 font-medium";
-  const isAuthenticated = useSelector(
+  const isAuthenticated = useAppSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
   let activeClassName = "underline";

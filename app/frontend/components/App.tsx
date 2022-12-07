@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 import { RootState } from "../store";
 import Footer from "./layout/Footer";
@@ -11,8 +11,8 @@ import Login from "./pages/Login";
 import { checkAuth } from "../store/actions/auth";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
+  const dispatch = useAppDispatch();
+  const isAuthenticated = useAppSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
 
