@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
@@ -39,6 +39,7 @@ const genderOptions: SelectOptions[] = [
 
 const Signup = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
 
   const isPasswordValid =
@@ -82,6 +83,7 @@ const Signup = () => {
     };
 
     dispatch(signupUser(formParams));
+    navigate("/");
   };
 
   return (
