@@ -15,6 +15,7 @@ const App = () => {
   const isAuthenticated = useAppSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
+  const currentUser = useAppSelector((state: RootState) => state.auth.currentUser);
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -23,7 +24,7 @@ const App = () => {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      {isAuthenticated && <p className="text-center">Logged in!</p>}
+      {isAuthenticated && <p className="text-center">Hello {currentUser?.firstName}!</p>}
       <main className="container flex-1 mx-auto my-12">
         <Routes>
           <Route index element={<Home />} />

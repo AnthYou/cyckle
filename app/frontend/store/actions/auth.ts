@@ -1,5 +1,5 @@
 import { AppDispatch } from "..";
-import { authActions } from "../slices/auth-slice";
+import { authActions, User } from "../slices/auth-slice";
 
 const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
 
@@ -90,8 +90,20 @@ export const loginUser = (credentials: Credentials) => {
         );
       }
 
+      const userJson = await response.json();
+      const userData = userJson.data;
+      const user: User = {
+        id: userData["id"],
+        email: userData["email"],
+        phone: userData["phone"],
+        firstName: userData["first_name"],
+        lastName: userData["last_name"],
+        gender: userData["gender"],
+        height: userData["height"]
+      }
+
       setToken(token);
-      dispatch(authActions.login(token));
+      dispatch(authActions.login({ token: token, currentUser: user }));
     } catch (error) {
       console.log(error);
     }
@@ -148,8 +160,19 @@ export const checkAuth = () => {
       if (!response.ok) {
         throw new Error("Something went wrong");
       }
+
+      const userJson = await response.json();
+      const user: User = {
+        id: userJson["id"],
+        email: userJson["email"],
+        phone: userJson["phone"],
+        firstName: userJson["first_name"],
+        lastName: userJson["last_name"],
+        gender: userJson["gender"],
+        height: userJson["height"]
+      }
     
-      dispatch(authActions.login(token));
+      dispatch(authActions.login({ token: token, currentUser: user }));
     } catch (error) {
       console.log(error);
     }
