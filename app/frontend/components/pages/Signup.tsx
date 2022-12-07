@@ -82,7 +82,6 @@ const Signup = () => {
     };
 
     dispatch(signupUser(formParams));
-    navigate("/");
   };
 
   return (
