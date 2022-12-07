@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
@@ -14,7 +14,6 @@ const defaultValues: Credentials = {
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [formValues, setFormValues] = useState<Credentials>(defaultValues);
   const isValid = formValues.email.includes("@") && formValues.password.length >= 6;
 
@@ -22,7 +21,6 @@ const Login = () => {
     event.preventDefault();
 
     dispatch(loginUser(formValues));
-    navigate("/");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
