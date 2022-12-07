@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { authActions } from "@/store/slices/auth-slice";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
 import Select, { SelectOptions } from "../UI/Select";
+import { useAppDispatch } from "@/hooks/redux";
+import { signupUser } from "@/store/actions/auth";
+import { Gender } from "@/store/slices/auth-slice";
 
 interface SignUpFormTypes {
   email: string;
@@ -14,7 +15,7 @@ interface SignUpFormTypes {
   passwordConfirmation: string;
   firstName: string;
   lastName: string;
-  gender: string;
+  gender: Gender;
   height: number;
   phone: string;
 }
@@ -37,8 +38,8 @@ const genderOptions: SelectOptions[] = [
 ];
 
 const Signup = () => {
+  const dispatch = useAppDispatch();
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
-  const dispatch = useDispatch();
 
   const isPasswordValid =
     formValues.password === formValues.passwordConfirmation &&
@@ -80,29 +81,7 @@ const Signup = () => {
       },
     };
 
-    try {
-      const response = await fetch("/api/v1/signup", {
-        method: "POST",
-        body: JSON.stringify(formParams),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-
-      const token = response.headers.get("Authorization");
-
-      if (token) {
-        localStorage.setItem("token", token);
-        dispatch(authActions.login(token));
-        console.log(token);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(signupUser(formParams));
   };
 
   return (

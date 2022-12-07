@@ -1,5 +1,5 @@
 import { AppDispatch } from "..";
-import { authActions, User } from "../slices/auth-slice";
+import { authActions, Gender, User } from "../slices/auth-slice";
 
 const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
 
@@ -31,39 +31,72 @@ const getToken = () => {
 const removeToken = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("lastLoginTime");
-}
+};
 
 export interface Credentials {
   email: string;
   password: string;
 }
 
-export const signupUser = (credentials: Credentials) => {
-  // TO DO
-  // return (dispatch: AppDispatch) => {
-  //   return fetch("/api/v1/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({ user: credentials })
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       setToken(res.headers.get("Authorization")!);
-  //       return res
-  //         .json()
-  //         .then((userJson) =>
-  //           dispatch({ type: AUTHENTICATED, payload: userJson })
-  //         );
-  //     } else {
-  //       return res.json().then((errors) => {
-  //         dispatch({ type: NOT_AUTHENTICATED });
-  //         return Promise.reject(errors);
-  //       });
-  //     }
-  //   });
-  // };
+export interface signupParams {
+  user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    gender: Gender;
+    height: number;
+    phone: string;
+    password: string;
+  }
+}
+
+export const signupUser = (formParams: signupParams) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await fetch("/api/v1/signup", {
+        method: "POST",
+        body: JSON.stringify(formParams),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const token = response.headers.get("Authorization");
+
+      if (!token) {
+        throw new Error(
+          "No authorization token provided by the response headers."
+        );
+      }
+
+      const userJson = await response.json();
+      const userData = userJson.data;
+      const user: User = {
+        id: userData["id"],
+        email: userData["email"],
+        phone: userData["phone"],
+        firstName: userData["first_name"],
+        lastName: userData["last_name"],
+        gender: userData["gender"],
+        height: userData["height"],
+      };
+
+      setToken(token);
+      dispatch(
+        authActions.login({
+          token: token,
+          currentUser: user,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };
 
 export const loginUser = (credentials: Credentials) => {
@@ -99,8 +132,8 @@ export const loginUser = (credentials: Credentials) => {
         firstName: userData["first_name"],
         lastName: userData["last_name"],
         gender: userData["gender"],
-        height: userData["height"]
-      }
+        height: userData["height"],
+      };
 
       setToken(token);
       dispatch(authActions.login({ token: token, currentUser: user }));
@@ -148,7 +181,7 @@ export const checkAuth = () => {
       if (!token) {
         return;
       }
-  
+
       const response = await fetch("/api/v1/current_user", {
         headers: {
           Accept: "application/json",
@@ -169,9 +202,9 @@ export const checkAuth = () => {
         firstName: userJson["first_name"],
         lastName: userJson["last_name"],
         gender: userJson["gender"],
-        height: userJson["height"]
-      }
-    
+        height: userJson["height"],
+      };
+
       dispatch(authActions.login({ token: token, currentUser: user }));
     } catch (error) {
       console.log(error);
