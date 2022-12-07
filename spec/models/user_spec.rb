@@ -62,4 +62,20 @@ RSpec.describe User, type: :model do
         .is_less_than_or_equal_to(250)
     end
   end
+
+  describe 'instance methods' do
+    let(:user) { build(:user) }
+
+    describe '#address' do
+      before do
+        user.street      = '1 rue du chemin vert'
+        user.postal_code = '75011'
+        user.city        = 'Paris'
+      end
+
+      it 'should return a valid address' do
+        expect(user.address).to eq('1 rue du chemin vert, 75011, Paris')
+      end
+    end
+  end
 end

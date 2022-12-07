@@ -47,4 +47,8 @@ class User < ApplicationRecord
   has_many :messages,      class_name: 'Message',      foreign_key: 'author_id'
   has_many :bookings
   has_many :reviews
+
+  def address
+    [street, postal_code, city].compact.join(', ')
+  end
 end
