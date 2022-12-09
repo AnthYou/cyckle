@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
 import Select, { SelectOptions } from "../UI/Select";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { signupUser } from "@/store/actions/auth";
 import { Gender } from "@/store/slices/auth-slice";
+import { messageActions } from "@/store/slices/message-slice";
 
 interface SignUpFormTypes {
   email: string;
@@ -39,6 +40,7 @@ const genderOptions: SelectOptions[] = [
 
 const Signup = () => {
   const dispatch = useAppDispatch();
+  const { message: error } = useAppSelector(state => state.message);
   const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
 
   const isPasswordValid =
@@ -50,6 +52,12 @@ const Signup = () => {
     formValues.phone.length >= 10;
   const isHeightValid = formValues.height >= 100 && formValues.height <= 200;
   const isValid = isPasswordValid && areMinCharsValid && isHeightValid;
+
+  useEffect(() => {
+    dispatch(messageActions.clearMessage());
+
+    return () => { dispatch(messageActions.clearMessage()) };
+  }, [dispatch])
 
   const handleInputChange = (
     e:
@@ -169,6 +177,7 @@ const Signup = () => {
             onChange={handleInputChange}
             required={true}
           />
+          {error && <p className="text-red-500">{error}</p>}
           <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5" disabled={!isValid}>
               S'inscrire

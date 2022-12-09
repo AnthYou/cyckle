@@ -1,5 +1,6 @@
 import { AppDispatch } from "..";
 import { authActions, Gender, User } from "../slices/auth-slice";
+import { messageActions } from "../slices/message-slice";
 
 const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
 
@@ -63,7 +64,8 @@ export const signupUser = (formParams: signupParams) => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong!");
+        const answer = await response.json();
+        throw new Error(answer.status.message);
       }
 
       const token = response.headers.get("Authorization");
@@ -94,7 +96,11 @@ export const signupUser = (formParams: signupParams) => {
         })
       );
     } catch (error) {
-      console.log(error);
+      if (typeof error === "string") {
+        dispatch(messageActions.setMessage(error));
+      } else if (error instanceof Error) {
+        dispatch(messageActions.setMessage(error.message));
+      }
     }
   };
 };
@@ -112,7 +118,8 @@ export const loginUser = (credentials: Credentials) => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        const answer = await response.json();
+        throw new Error(answer.error);
       }
 
       const token = response.headers.get("Authorization");
@@ -138,7 +145,11 @@ export const loginUser = (credentials: Credentials) => {
       setToken(token);
       dispatch(authActions.login({ token: token, currentUser: user }));
     } catch (error) {
-      console.log(error);
+      if (typeof error === "string") {
+        dispatch(messageActions.setMessage(error));
+      } else if (error instanceof Error) {
+        dispatch(messageActions.setMessage(error.message));
+      }
     }
   };
 };
@@ -162,13 +173,18 @@ export const logoutUser = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        const answer = await response.json();
+        throw new Error(answer.error);
       }
 
       removeToken();
       dispatch(authActions.logout());
     } catch (error) {
-      console.log(error);
+      if (typeof error === "string") {
+        dispatch(messageActions.setMessage(error));
+      } else if (error instanceof Error) {
+        dispatch(messageActions.setMessage(error.message));
+      }
     }
   };
 };
@@ -191,7 +207,8 @@ export const checkAuth = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        const answer = await response.json();
+        throw new Error(answer.error);
       }
 
       const userJson = await response.json();

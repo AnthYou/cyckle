@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
 import { Credentials, loginUser } from '@/store/actions/auth';
-import { useAppDispatch } from '@/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { messageActions } from '@/store/slices/message-slice';
 
 const defaultValues: Credentials = {
   email: "",
@@ -14,8 +15,15 @@ const defaultValues: Credentials = {
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const { message: error } = useAppSelector(state => state.message);
   const [formValues, setFormValues] = useState<Credentials>(defaultValues);
   const isValid = formValues.email.includes("@") && formValues.password.length >= 6;
+
+  useEffect(() => {
+    dispatch(messageActions.clearMessage());
+
+    return () => { dispatch(messageActions.clearMessage()) };
+  }, [dispatch])
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -59,6 +67,7 @@ const Login = () => {
             onChange={handleInputChange}
             required={true}
           />
+          {error && <p className="text-red-500">{error}</p>}
           <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5" disabled={!isValid}>
               S'inscrire
