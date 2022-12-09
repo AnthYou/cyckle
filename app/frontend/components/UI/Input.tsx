@@ -12,6 +12,7 @@ interface InputProps {
   placeholder?: string;
   value: string | number | readonly string[] | undefined;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  onBlur?: React.ChangeEventHandler<HTMLInputElement> | undefined;
   required?: boolean;
 }
 
@@ -27,13 +28,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       value,
       onChange,
+      onBlur,
       required,
     }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
       <div className={classes.Input}>
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id}>
+          {label} {required && "*"}
+        </label>
         <input
           type={type}
           name={name}
@@ -43,6 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           max={max}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
           ref={ref}
           required={required}
         />
