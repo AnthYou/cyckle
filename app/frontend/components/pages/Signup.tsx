@@ -85,8 +85,10 @@ const Signup = () => {
     valueChangeHandler: genderChangedHandler,
     inputBlurHandler: genderBlurHandler,
     reset: resetGenderInput,
-  } = useInput((gender: string) =>
-    genderOptions.map((object) => object.value).includes(gender)
+  } = useInput(
+    (gender: string) =>
+      genderOptions.map((object) => object.value).includes(gender),
+    "male"
   );
 
   const isValid =

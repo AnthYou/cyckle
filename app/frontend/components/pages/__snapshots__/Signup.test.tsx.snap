@@ -68,7 +68,7 @@ exports[`<Signup /> > should render correctly 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           required={true}
-          value=""
+          value="male"
         >
           <option
             value="male"
