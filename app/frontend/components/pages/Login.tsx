@@ -87,7 +87,7 @@ const Login = () => {
           {error && <p className="text-red-500">{error}</p>}
           <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5" disabled={!isValid}>
-              S'inscrire
+              Se connecter
             </Button>
             <p>
               Vous n'avez pas encore de compte ?{" "}

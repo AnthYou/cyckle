@@ -61,7 +61,7 @@ exports[`<Login /> > should render correctly 1`] = `
           className="_Button_4ea4ec _primary_4ea4ec mt-5"
           disabled={true}
         >
-          S'inscrire
+          Se connecter
         </button>
         <p>
           Vous n'avez pas encore de compte ?
