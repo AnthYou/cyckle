@@ -19,10 +19,13 @@ exports[`<Login /> > should render correctly 1`] = `
           htmlFor="email"
         >
           Email
+           
+          *
         </label>
         <input
           id="email"
           name="email"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="raymond@cyckle.com"
           required={true}
@@ -37,10 +40,13 @@ exports[`<Login /> > should render correctly 1`] = `
           htmlFor="password"
         >
           Mot de passe
+           
+          *
         </label>
         <input
           id="password"
           name="password"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="******"
           required={true}
@@ -58,7 +64,8 @@ exports[`<Login /> > should render correctly 1`] = `
           S'inscrire
         </button>
         <p>
-          Vous n'avez pas encore de compte ? 
+          Vous n'avez pas encore de compte ?
+           
           <a
             href="/signup"
             onClick={[Function]}

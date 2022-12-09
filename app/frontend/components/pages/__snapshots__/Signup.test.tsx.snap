@@ -19,10 +19,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="firstName"
         >
           Prénom
+           
+          *
         </label>
         <input
           id="firstName"
           name="firstName"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="Raymond"
           required={true}
@@ -37,10 +40,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="lastName"
         >
           Nom de famille
+           
+          *
         </label>
         <input
           id="lastName"
           name="lastName"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="Poulidor"
           required={true}
@@ -59,9 +65,10 @@ exports[`<Signup /> > should render correctly 1`] = `
         <select
           id="gender"
           name="gender"
+          onBlur={[Function]}
           onChange={[Function]}
           required={true}
-          value="male"
+          value=""
         >
           <option
             value="male"
@@ -87,16 +94,20 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="height"
         >
           Taille (en cm)
+           
+          *
         </label>
         <input
           id="height"
           max="200"
           min="100"
           name="height"
+          onBlur={[Function]}
           onChange={[Function]}
+          placeholder="150"
           required={true}
           type="number"
-          value={150}
+          value=""
         />
       </div>
       <div
@@ -106,10 +117,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="email"
         >
           Email
+           
+          *
         </label>
         <input
           id="email"
           name="email"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="raymond@cyckle.com"
           required={true}
@@ -124,10 +138,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="phone"
         >
           Numéro de téléphone
+           
+          *
         </label>
         <input
           id="phone"
           name="phone"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="06 01 02 03 04"
           required={true}
@@ -142,10 +159,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="password"
         >
           Mot de passe
+           
+          *
         </label>
         <input
           id="password"
           name="password"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="******"
           required={true}
@@ -160,10 +180,13 @@ exports[`<Signup /> > should render correctly 1`] = `
           htmlFor="passwordConfirmation"
         >
           Confirmation du mot de passe
+           
+          *
         </label>
         <input
           id="passwordConfirmation"
           name="passwordConfirmation"
+          onBlur={[Function]}
           onChange={[Function]}
           placeholder="******"
           required={true}
@@ -181,7 +204,8 @@ exports[`<Signup /> > should render correctly 1`] = `
           S'inscrire
         </button>
         <p>
-          Vous avez déjà un compte ? 
+          Vous avez déjà un compte ?
+           
           <a
             href="/login"
             onClick={[Function]}
