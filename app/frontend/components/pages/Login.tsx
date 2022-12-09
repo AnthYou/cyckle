@@ -13,10 +13,6 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const { message: error } = useAppSelector((state) => state.message);
 
-  const validateEmail = (email: string) =>
-    email.trim() !== "" && email.includes("@");
-  const validatePassword = (password: string) => password.length >= 6;
-
   const {
     value: enteredEmail,
     isValid: enteredEmailIsValid,
@@ -24,7 +20,7 @@ const Login = () => {
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
-  } = useInput(validateEmail);
+  } = useInput((email: string) => email.trim() !== "" && email.includes("@"));
   const {
     value: enteredPassword,
     isValid: enteredPasswordIsValid,
@@ -32,7 +28,7 @@ const Login = () => {
     valueChangeHandler: passwordChangedHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: resetPasswordInput,
-  } = useInput(validatePassword);
+  } = useInput((password: string) => password.length >= 6);
 
   const isValid = enteredEmailIsValid && enteredPasswordIsValid;
 

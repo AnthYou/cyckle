@@ -7,30 +7,8 @@ import Input from "../UI/Input";
 import Select, { SelectOptions } from "../UI/Select";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { signupUser } from "@/store/actions/auth";
-import { Gender } from "@/store/slices/auth-slice";
 import { messageActions } from "@/store/slices/message-slice";
-
-interface SignUpFormTypes {
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-  firstName: string;
-  lastName: string;
-  gender: Gender;
-  height: number;
-  phone: string;
-}
-
-const defaultValues: SignUpFormTypes = {
-  email: "",
-  password: "",
-  passwordConfirmation: "",
-  firstName: "",
-  lastName: "",
-  gender: "male",
-  height: 150,
-  phone: "",
-};
+import useInput from "@/hooks/use-input";
 
 const genderOptions: SelectOptions[] = [
   { id: 1, label: "Homme", value: "male" },
@@ -40,56 +18,113 @@ const genderOptions: SelectOptions[] = [
 
 const Signup = () => {
   const dispatch = useAppDispatch();
-  const { message: error } = useAppSelector(state => state.message);
-  const [formValues, setFormValues] = useState<SignUpFormTypes>(defaultValues);
+  const { message: error } = useAppSelector((state) => state.message);
 
-  const isPasswordValid =
-    formValues.password === formValues.passwordConfirmation &&
-    formValues.password.length >= 6;
-  const areMinCharsValid =
-    formValues.firstName.length >= 3 &&
-    formValues.lastName.length >= 2 &&
-    formValues.phone.length >= 10;
-  const isHeightValid = formValues.height >= 100 && formValues.height <= 200;
-  const isValid = isPasswordValid && areMinCharsValid && isHeightValid;
+  const {
+    value: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: enteredEmailHasError,
+    valueChangeHandler: emailChangedHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput,
+  } = useInput((email: string) => email.trim() !== "" && email.includes("@"));
+  const {
+    value: enteredPassword,
+    isValid: enteredPasswordIsValid,
+    hasError: enteredPasswordHasError,
+    valueChangeHandler: passwordChangedHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPasswordInput,
+  } = useInput((password: string) => password.length >= 6);
+  const {
+    value: enteredPasswordConfirmation,
+    isValid: enteredPasswordConfirmationIsValid,
+    hasError: enteredPasswordConfirmationHasError,
+    valueChangeHandler: passwordConfirmationChangedHandler,
+    inputBlurHandler: passwordConfirmationBlurHandler,
+    reset: resetPasswordConfirmationInput,
+  } = useInput(
+    (passwordConfirmation: string) => passwordConfirmation === enteredPassword
+  );
+  const {
+    value: enteredFirstName,
+    isValid: enteredFirstNameIsValid,
+    hasError: enteredFirstNameHasError,
+    valueChangeHandler: firstNameChangedHandler,
+    inputBlurHandler: firstNameBlurHandler,
+    reset: resetFirstNameInput,
+  } = useInput((firstName: string) => firstName.length >= 3);
+  const {
+    value: enteredLastName,
+    isValid: enteredLastNameIsValid,
+    hasError: enteredLastNameHasError,
+    valueChangeHandler: lastNameChangedHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    reset: resetLastNameInput,
+  } = useInput((lastName: string) => lastName.length >= 2);
+  const {
+    value: enteredPhone,
+    isValid: enteredPhoneIsValid,
+    hasError: enteredPhoneHasError,
+    valueChangeHandler: phoneChangedHandler,
+    inputBlurHandler: phoneBlurHandler,
+    reset: resetPhoneInput,
+  } = useInput((phone: string) => phone.length >= 10);
+  const {
+    value: enteredHeight,
+    isValid: enteredHeightIsValid,
+    hasError: enteredHeightHasError,
+    valueChangeHandler: heightChangedHandler,
+    inputBlurHandler: heightBlurHandler,
+    reset: resetHeightInput,
+  } = useInput((height: number) => height >= 100 && height <= 250);
+  const {
+    value: enteredGender,
+    isValid: enteredGenderIsValid,
+    hasError: enteredGenderHasError,
+    valueChangeHandler: genderChangedHandler,
+    inputBlurHandler: genderBlurHandler,
+    reset: resetGenderInput,
+  } = useInput((gender: string) =>
+    genderOptions.map((object) => object.value).includes(gender)
+  );
+
+  const isValid =
+    enteredFirstNameIsValid &&
+    enteredLastNameIsValid &&
+    enteredEmailIsValid &&
+    enteredGenderIsValid &&
+    enteredHeightIsValid &&
+    enteredPhoneIsValid &&
+    enteredPasswordIsValid &&
+    enteredPasswordConfirmationIsValid;
 
   useEffect(() => {
     dispatch(messageActions.clearMessage());
 
-    return () => { dispatch(messageActions.clearMessage()) };
-  }, [dispatch])
-
-  const handleInputChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setFormValues((prevValues) => {
-      return {
-        ...prevValues,
-        [name]: value,
-      };
-    });
-  };
+    return () => {
+      dispatch(messageActions.clearMessage());
+    };
+  }, [dispatch]);
 
   const handleForm = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const formParams = {
       user: {
-        first_name: formValues.firstName,
-        last_name: formValues.lastName,
-        email: formValues.email,
-        gender: formValues.gender,
-        height: formValues.height,
-        phone: formValues.phone,
-        password: formValues.password,
+        first_name: enteredFirstName,
+        last_name: enteredLastName,
+        email: enteredEmail,
+        gender: enteredGender,
+        height: enteredHeight,
+        phone: enteredPhone,
+        password: enteredPassword,
       },
     };
 
     dispatch(signupUser(formParams));
+    resetPasswordInput();
+    resetPasswordConfirmationInput();
   };
 
   return (
@@ -103,87 +138,137 @@ const Signup = () => {
             label="Prénom"
             name="firstName"
             placeholder="Raymond"
-            value={formValues.firstName}
-            onChange={handleInputChange}
+            value={enteredFirstName}
+            onChange={firstNameChangedHandler}
+            onBlur={firstNameBlurHandler}
             required={true}
           />
+          {enteredFirstNameHasError && (
+            <p className="text-red-500">
+              Votre prénom doit comporter au moins 3 caractères.
+            </p>
+          )}
           <Input
             id="lastName"
             type="text"
             label="Nom de famille"
             name="lastName"
             placeholder="Poulidor"
-            value={formValues.lastName}
-            onChange={handleInputChange}
+            value={enteredLastName}
+            onChange={lastNameChangedHandler}
+            onBlur={lastNameBlurHandler}
             required={true}
           />
+          {enteredLastNameHasError && (
+            <p className="text-red-500">
+              Votre nom de famille doit comporter au moins 2 caractères.
+            </p>
+          )}
           <Select
             id="gender"
             name="gender"
             label="Genre"
             options={genderOptions}
-            value={formValues.gender}
-            onChange={handleInputChange}
+            value={enteredGender}
+            onChange={genderChangedHandler}
+            onBlur={genderBlurHandler}
             required={true}
           />
+          {enteredGenderHasError && (
+            <p className="text-red-500">Vous devez renseigner un genre.</p>
+          )}
           <Input
             id="height"
             type="number"
             label="Taille (en cm)"
             name="height"
+            placeholder="150"
             min="100"
             max="200"
-            value={formValues.height}
-            onChange={handleInputChange}
+            value={enteredHeight}
+            onChange={heightChangedHandler}
+            onBlur={heightBlurHandler}
             required={true}
           />
+          {enteredHeightHasError && (
+            <p className="text-red-500">
+              Votre taille doit être comprise entre 100 et 250 cms (entre 1m et
+              2,5m).
+            </p>
+          )}
           <Input
             id="email"
             type="text"
             label="Email"
             name="email"
-            value={formValues.email}
-            onChange={handleInputChange}
+            value={enteredEmail}
+            onChange={emailChangedHandler}
+            onBlur={emailBlurHandler}
             placeholder="raymond@cyckle.com"
             required={true}
           />
+          {enteredEmailHasError && (
+            <p className="text-red-500">
+              Veuillez entrer une adresse mail valide.
+            </p>
+          )}
           <Input
             id="phone"
             type="tel"
             label="Numéro de téléphone"
             name="phone"
-            value={formValues.phone}
-            onChange={handleInputChange}
+            value={enteredPhone}
+            onChange={phoneChangedHandler}
+            onBlur={phoneBlurHandler}
             placeholder="06 01 02 03 04"
             required={true}
           />
+          {enteredPhoneHasError && (
+            <p className="text-red-500">
+              Veuillez entrer un numéro de téléphone valide.
+            </p>
+          )}
           <Input
             id="password"
             type="password"
             label="Mot de passe"
             name="password"
             placeholder="******"
-            value={formValues.password}
-            onChange={handleInputChange}
+            value={enteredPassword}
+            onChange={passwordChangedHandler}
+            onBlur={passwordBlurHandler}
             required={true}
           />
+          {enteredPasswordHasError && (
+            <p className="text-red-500">
+              Votre mot de passe doit comporter au moins 6 caractères.
+            </p>
+          )}
           <Input
             id="passwordConfirmation"
             type="password"
             label="Confirmation du mot de passe"
             name="passwordConfirmation"
             placeholder="******"
-            value={formValues.passwordConfirmation}
-            onChange={handleInputChange}
+            value={enteredPasswordConfirmation}
+            onChange={passwordConfirmationChangedHandler}
+            onBlur={passwordConfirmationBlurHandler}
             required={true}
           />
+          {enteredPasswordConfirmationHasError && (
+            <p className="text-red-500">
+              Les deux mots de passe ne correspondent pas. Vérifiez votre
+              saisie.
+            </p>
+          )}
           {error && <p className="text-red-500">{error}</p>}
           <div className="flex flex-col items-center justify-center gap-4">
             <Button color="primary" className="mt-5" disabled={!isValid}>
               S'inscrire
             </Button>
             <p>
-              Vous avez déjà un compte ? <Link to="/login">Identifiez-vous</Link>
+              Vous avez déjà un compte ?{" "}
+              <Link to="/login">Identifiez-vous</Link>
             </p>
           </div>
         </form>

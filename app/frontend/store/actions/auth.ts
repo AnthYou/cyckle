@@ -44,8 +44,8 @@ export interface signupParams {
     first_name: string;
     last_name: string;
     email: string;
-    gender: Gender;
-    height: number;
+    gender: string;
+    height: string;
     phone: string;
     password: string;
   }

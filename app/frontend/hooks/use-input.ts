@@ -7,11 +7,11 @@ const useInput = (validateValue: (value: any) => boolean) => {
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
 
-  const valueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const valueChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setEnteredValue(event.target.value);
   };
 
-  const inputBlurHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const inputBlurHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setIsTouched(true);
   };
 
