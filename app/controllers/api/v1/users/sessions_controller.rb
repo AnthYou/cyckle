@@ -6,12 +6,12 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
 
   def respond_with(resource, _opts = {})
     render json: {
-      status: { code: 200, message: 'Logged in successfully.' },
+      status: { code: 200, message: 'Connexion réussie.' },
       data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
     }, status: :ok
   end
 
   def respond_to_on_destroy
-    render json: { message: 'Logged out.' }, status: :ok
+    render json: { message: 'Déconnexion réussie.' }, status: :ok
   end
 end
