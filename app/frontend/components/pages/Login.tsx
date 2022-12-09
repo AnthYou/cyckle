@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
-import { Credentials, loginUser } from "@/store/actions/auth";
+import { loginUser } from "@/store/actions/auth";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { messageActions } from "@/store/slices/message-slice";
 import useInput from "@/hooks/use-input";
