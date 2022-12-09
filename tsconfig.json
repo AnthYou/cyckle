@@ -15,7 +15,9 @@
       "@/*": ["app/*"],
       "@/components/*": ["app/frontend/components/*"],
       "@/images/*": ["app/frontend/images/*"],
-      "@/utils/*": ["app/frontend/utils/*"]
+      "@/utils/*": ["app/frontend/utils/*"],
+      "@/hooks/*": ["app/frontend/hooks/*"],
+      "@/store/*": ["app/frontend/store/*"]
     },
     "noEmit": true,
     "jsx": "react-jsx"

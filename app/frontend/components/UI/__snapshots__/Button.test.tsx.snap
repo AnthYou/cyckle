@@ -2,19 +2,19 @@
 
 exports[`<Button /> > should render correctly providing a class 1`] = `
 <button
-  className="_Button_4ea4ec _undefined_4ea4ec primary"
+  className="_Button_4ea4ec _primary_4ea4ec uppercase"
 />
 `;
 
 exports[`<Button /> > should render correctly providing a class and an onClick property 1`] = `
 <button
-  className="_Button_4ea4ec _undefined_4ea4ec primary"
+  className="_Button_4ea4ec _primary_4ea4ec uppercase"
   onClick={[Function]}
 />
 `;
 
 exports[`<Button /> > should render correctly without providing a class 1`] = `
 <button
-  className="_Button_4ea4ec _undefined_4ea4ec"
+  className="_Button_4ea4ec _primary_4ea4ec"
 />
 `;

@@ -39,3 +39,6 @@ node_modules
 
 # DS Store for mac users
 .DS_Store
+
+# .env
+.env

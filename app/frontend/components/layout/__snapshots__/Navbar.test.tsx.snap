@@ -10,6 +10,7 @@ exports[`<Navbar /> > should render correctly 1`] = `
       onClick={[Function]}
       style={
         {
+          "color": "#373737",
           "fontFamily": "Playfair-Display",
         }
       }
@@ -34,11 +35,16 @@ exports[`<Navbar /> > should render correctly 1`] = `
     <li
       className="flex flex-col justify-center items-center"
     >
-      <button
-        className="_Button_4ea4ec _alternate_4ea4ec"
+      <a
+        href="/login"
+        onClick={[Function]}
       >
-        S'inscrire / se connecter
-      </button>
+        <button
+          className="_Button_4ea4ec _alternate_4ea4ec"
+        >
+          S'inscrire / se connecter
+        </button>
+      </a>
     </li>
   </ul>
 </nav>

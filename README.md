@@ -20,6 +20,16 @@ bundle install
 yarn install
 ```
 
+Initialize your JWT_SECRET_KEY
+```
+touch .env
+rake secret
+```
+Copy this value and add it to your .env file
+```
+JWT_SECRET_KEY=xxx
+```
+
 ### Launching the dev server
 `foreman start -f Procfile.dev`
 

@@ -9,6 +9,7 @@
 #  first_name             :string
 #  gender                 :string
 #  height                 :integer
+#  jti                    :string           not null
 #  last_name              :string
 #  phone                  :string
 #  postal_code            :string
@@ -22,6 +23,7 @@
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_jti                   (jti) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 require 'rails_helper'
@@ -41,9 +43,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:gender) }
     it { should validate_presence_of(:height) }
-    it { should validate_presence_of(:street) }
-    it { should validate_presence_of(:postal_code) }
-    it { should validate_presence_of(:city) }
     it { should validate_presence_of(:phone) }
     it { should validate_length_of(:first_name).is_at_least(3) }
     it { should validate_length_of(:last_name).is_at_least(2) }
@@ -61,6 +60,22 @@ RSpec.describe User, type: :model do
         .only_integer
         .is_greater_than_or_equal_to(100)
         .is_less_than_or_equal_to(250)
+    end
+  end
+
+  describe 'instance methods' do
+    let(:user) { build(:user) }
+
+    describe '#address' do
+      before do
+        user.street      = '1 rue du chemin vert'
+        user.postal_code = '75011'
+        user.city        = 'Paris'
+      end
+
+      it 'should return a valid address' do
+        expect(user.address).to eq('1 rue du chemin vert, 75011, Paris')
+      end
     end
   end
 end
