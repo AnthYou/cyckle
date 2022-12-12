@@ -13,8 +13,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      # API Routes TO DO
       get '/current_user', to: 'current_user#index'
+
+      resources :bikes, only: %i[index show create update destroy]
     end
   end
 

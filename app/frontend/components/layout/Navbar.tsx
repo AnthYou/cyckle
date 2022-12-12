@@ -30,12 +30,12 @@ const Navbar = () => {
       <ul className="ml-auto flex space-x-4">
         <li className="flex flex-col justify-center items-center">
           <NavLink
-            to="/about"
+            to="/bikes"
             className={({ isActive }) =>
               `${navLinkClasses} ${isActive ? activeClassName : undefined}`
             }
           >
-            Comment ça marche
+            Trouver un vélo
           </NavLink>
         </li>
         <li className="flex flex-col justify-center items-center">

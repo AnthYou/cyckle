@@ -1,6 +1,7 @@
 import { AppDispatch } from "..";
-import { authActions, Gender, User } from "../slices/auth-slice";
+import { authActions } from "../slices/auth-slice";
 import { messageActions } from "../slices/message-slice";
+import { User } from "@/utils/interfaces";
 
 const daysToMilliseconds = (days: number) => days * 24 * 60 * 60 * 1000;
 

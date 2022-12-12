@@ -3,12 +3,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 import { RootState } from "../store";
+import { checkAuth } from "../store/actions/auth";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import { checkAuth } from "../store/actions/auth";
+import AvailableBikes from "./pages/AvailableBikes";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ const App = () => {
       <main className="container flex-1 mx-auto my-12">
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/bikes" element={<AvailableBikes />} />
           <Route path="/login" element={isAuthenticated ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/signup" element={isAuthenticated ? <Navigate replace to="/" /> : <Signup />} />
         </Routes>

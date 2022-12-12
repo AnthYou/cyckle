@@ -1,19 +1,5 @@
+import { User } from "@/utils/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export type Gender = "male" | "female" | "non-binary";
-
-export interface User {
-  id: number;
-  email: string;
-  phone: string;
-  firstName: string;
-  lastName: string;
-  gender: Gender;
-  height: number;
-  address?: string;
-  city?: string;
-}
-
 export interface AuthState {
   currentUser: User | null;
   isAuthenticated: boolean;
