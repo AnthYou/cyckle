@@ -48,6 +48,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
+  has_one_attached :avatar
+
   def address
     [street, postal_code, city].compact.join(', ')
   end

@@ -33,4 +33,8 @@ class UserSerializer
   attribute :created_date do |user|
     user&.created_at&.strftime('%d/%m/%Y')
   end
+
+  attribute :photo_url do |user|
+    user.avatar.attached? ? user.avatar.url : nil
+  end
 end

@@ -42,6 +42,7 @@ RSpec.describe Bike, type: :model do
   describe 'associations' do
     it { should belong_to(:owner) }
     it { should have_many(:bookings) }
+    it { should have_many(:reviews) }
   end
 
   describe 'validations' do

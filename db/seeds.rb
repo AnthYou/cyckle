@@ -11,6 +11,8 @@ user_count = 0
 bike_count = 0
 
 10.times do |n|
+  user_file = URI.open('https://source.unsplash.com/900x900/?portrait')
+  bike_file = URI.open('https://source.unsplash.com/1600x900/?bicycle')
   user = User.new(
     email: "user#{n + 1}@cyckle.com",
     password: '123456',
@@ -45,6 +47,8 @@ bike_count = 0
     price_per_day_cents: (1000..3000).to_a.sample,
     owner: user
   )
+  user.avatar.attach(io: user_file, filename: 'user.jpg', content_type: 'image/jpg')
+  bike.photos.attach(io: bike_file, filename: 'bike.jpg', content_type: 'image/jpg')
 
   user_count += 1 if user.save
   bike_count += 1 if bike.save
