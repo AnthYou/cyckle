@@ -3,12 +3,18 @@ class Api::V1::BikesController < Api::V1::BaseController
 
   def index
     @bikes = policy_scope(Bike)
-    render json: @bikes
+    render json: {
+      status: { code: 200, message: 'Bikes successfully retrieved.' },
+      data: BikeSerializer.new(@bikes, is_collection: true).serializable_hash[:data].map { |obj| obj[:attributes] }
+    }
   end
 
   def show
     @bike = Bike.find(params[:id])
-    render json: @bike
+    render json: {
+      status: { code: 200, message: 'Bike successfully retrieved.' },
+      data: BikeSerializer.new(@bike, is_collection: false).serializable_hash[:data][:attributes]
+    }
 
     authorize @bike
   end
@@ -16,7 +22,10 @@ class Api::V1::BikesController < Api::V1::BaseController
   def create
     @bike = Bike.new(bike_params)
     if @bike.save
-      render json: @bike
+      render json: {
+        status: { code: 200, message: 'Bike successfully created.' },
+        data: BikeSerializer.new(@bike, is_collection: false).serializable_hash[:data][:attributes]
+      }
     else
       render json: @bike.errors, status: :unprocessable_entity
     end
@@ -27,7 +36,10 @@ class Api::V1::BikesController < Api::V1::BaseController
   def update
     @bike = Bike.find(params[:id])
     if @bike.update(bike_params)
-      render json: @bike
+      render json: {
+        status: { code: 200, message: 'Bike successfully updated.' },
+        data: BikeSerializer.new(@bike, is_collection: false).serializable_hash[:data][:attributes]
+      }
     else
       render json: @bike.errors, status: :unprocessable_entity
     end
@@ -38,7 +50,10 @@ class Api::V1::BikesController < Api::V1::BaseController
   def destroy
     @bike = Bike.find(params[:id])
     @bike.destroy
-    render json: @bike
+    render json: {
+      status: { code: 200, message: 'Bike successfully destroyed.' },
+      data: BikeSerializer.new(@bike, is_collection: false).serializable_hash[:data][:attributes]
+    }
 
     authorize @bike
   end

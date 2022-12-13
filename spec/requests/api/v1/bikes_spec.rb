@@ -11,6 +11,11 @@ RSpec.describe 'Api::V1::Bikes', type: :request do
       get '/api/v1/bikes'
       expect(response).to have_http_status(:success)
     end
+
+    it 'returns 10 bikes' do
+      get '/api/v1/bikes'
+      expect(JSON.parse(response.body)['data'].count).to eq(10)
+    end
   end
 
   describe 'GET /bikes/:id' do
@@ -20,12 +25,17 @@ RSpec.describe 'Api::V1::Bikes', type: :request do
       get "/api/v1/bikes/#{bike.id}"
       expect(response).to have_http_status(:success)
     end
+
+    it 'returns the correct bike' do
+      get "/api/v1/bikes/#{bike.id}"
+      expect(JSON.parse(response.body)['data']['id']).to eq(bike.id)
+    end
   end
 
   describe 'POST /bikes' do
     let(:user) { create(:user) }
 
-    it 'returns http success' do
+    before do
       headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
       auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, user)
       post '/api/v1/bikes', params: { 'bike': {
@@ -46,7 +56,14 @@ RSpec.describe 'Api::V1::Bikes', type: :request do
         'owner_id': user.id
       } }.to_json,
                             headers: auth_headers
+    end
+
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
+    end
+
+    it 'returns the correct bike' do
+      expect(JSON.parse(response.body)['data']['name']).to eq('Tarmac')
     end
   end
 
@@ -54,11 +71,18 @@ RSpec.describe 'Api::V1::Bikes', type: :request do
     let(:user) { create(:user) }
     let(:bike) { create(:bike, owner: user) }
 
-    it 'returns http success' do
+    before do
       headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
       auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, user)
       patch "/api/v1/bikes/#{bike.id}", params: { 'bike': { 'color': 'Red' } }.to_json, headers: auth_headers
+    end
+
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
+    end
+
+    it 'returns the correct updated bike' do
+      expect(JSON.parse(response.body)['data']['color']).to eq('Red')
     end
   end
 
@@ -66,11 +90,18 @@ RSpec.describe 'Api::V1::Bikes', type: :request do
     let(:user) { create(:user) }
     let(:bike) { create(:bike, owner: user) }
 
-    it 'returns http success' do
+    before do
       headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
       auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, user)
       delete "/api/v1/bikes/#{bike.id}", headers: auth_headers
+    end
+
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
+    end
+
+    it 'returns the correct bike' do
+      expect(JSON.parse(response.body)['data']['id']).to eq(bike.id)
     end
   end
 end
