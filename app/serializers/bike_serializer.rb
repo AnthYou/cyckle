@@ -40,9 +40,13 @@ class BikeSerializer
   include FastJsonapi::ObjectSerializer
   attributes :id, :name, :brand, :model, :release_year, :category, :status, :size, :gender, :description, :groupset,
              :color, :is_electric, :min_days, :price_per_day_cents, :battery_life, :weight, :address,
-             :city, :latitude, :longitude, :created_at
+             :city, :latitude, :longitude, :created_at, :updated_at
 
   attribute :photo_urls do |bike|
     bike.photos.attached? ? bike.photos.map(&:url) : nil
+  end
+
+  attribute :owner do |bike|
+    UserSerializer.new(bike.owner).serializable_hash[:data][:attributes]
   end
 end
