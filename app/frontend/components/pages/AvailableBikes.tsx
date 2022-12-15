@@ -23,9 +23,11 @@ const AvailableBikes = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {bikes.map((bike) => (
-        <BikeCard key={bike.id} {...bike} />
-      ))}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {bikes.map((bike) => (
+          <BikeCard key={bike.id} {...bike} />
+        ))}
+      </div>
     </>
   );
 };
