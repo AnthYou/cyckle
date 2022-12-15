@@ -28,6 +28,8 @@
 #
 class UserSerializer
   include FastJsonapi::ObjectSerializer
+  set_key_transform :camel_lower
+
   attributes :id, :email, :first_name, :last_name, :gender, :height, :phone, :address, :city, :created_at
 
   attribute :created_date do |user|

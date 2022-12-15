@@ -40,19 +40,19 @@ export interface Credentials {
   password: string;
 }
 
-export interface signupParams {
+export interface SignupParams {
   user: {
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     gender: string;
     height: string;
     phone: string;
     password: string;
-  }
+  };
 }
 
-export const signupUser = (formParams: signupParams) => {
+export const signupUser = (formParams: SignupParams) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await fetch("/api/v1/signup", {
@@ -77,17 +77,8 @@ export const signupUser = (formParams: signupParams) => {
         );
       }
 
-      const userJson = await response.json();
-      const userData = userJson.data;
-      const user: User = {
-        id: userData["id"],
-        email: userData["email"],
-        phone: userData["phone"],
-        firstName: userData["first_name"],
-        lastName: userData["last_name"],
-        gender: userData["gender"],
-        height: userData["height"],
-      };
+      const responseJson = await response.json();
+      const user: User = responseJson.data;
 
       setToken(token);
       dispatch(
@@ -131,17 +122,8 @@ export const loginUser = (credentials: Credentials) => {
         );
       }
 
-      const userJson = await response.json();
-      const userData = userJson.data;
-      const user: User = {
-        id: userData["id"],
-        email: userData["email"],
-        phone: userData["phone"],
-        firstName: userData["first_name"],
-        lastName: userData["last_name"],
-        gender: userData["gender"],
-        height: userData["height"],
-      };
+      const responseJson = await response.json();
+      const user: User = responseJson.data;
 
       setToken(token);
       dispatch(authActions.login({ token: token, currentUser: user }));
@@ -212,16 +194,8 @@ export const checkAuth = () => {
         throw new Error(answer.error);
       }
 
-      const userJson = await response.json();
-      const user: User = {
-        id: userJson["id"],
-        email: userJson["email"],
-        phone: userJson["phone"],
-        firstName: userJson["first_name"],
-        lastName: userJson["last_name"],
-        gender: userJson["gender"],
-        height: userJson["height"],
-      };
+      const responseJson = await response.json();
+      const user: User = responseJson.data;
 
       dispatch(authActions.login({ token: token, currentUser: user }));
     } catch (error) {

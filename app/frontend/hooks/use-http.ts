@@ -7,6 +7,11 @@ interface RequestConfig {
   body?: { [key: string]: any };
 }
 
+interface ResponseData {
+  status: { [key: string]: string }
+  data: any;
+}
+
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +19,7 @@ const useHttp = () => {
   const sendRequest = useCallback(
     async (
       requestConfig: RequestConfig,
-      applyData: (data: { [key: string]: string }) => void
+      applyData: (data: ResponseData) => void
     ) => {
       setIsLoading(true);
       setError(null);

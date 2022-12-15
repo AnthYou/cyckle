@@ -18,6 +18,7 @@ export interface Bike {
   latitude: number;
   longitude: number;
   owner: User;
+  photoUrls?: string[];
   model?: string;
   releaseYear?: number;
   color?: string;
@@ -39,6 +40,7 @@ export interface User {
   lastName: string;
   gender: Gender;
   height: number;
+  avatarUrl?: string;
   address?: string;
   city?: string;
 }

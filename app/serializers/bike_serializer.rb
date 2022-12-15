@@ -38,6 +38,8 @@
 #
 class BikeSerializer
   include FastJsonapi::ObjectSerializer
+  set_key_transform :camel_lower
+
   attributes :id, :name, :brand, :model, :release_year, :category, :status, :size, :gender, :description, :groupset,
              :color, :is_electric, :min_days, :price_per_day_cents, :battery_life, :weight, :address,
              :city, :latitude, :longitude, :created_at, :updated_at

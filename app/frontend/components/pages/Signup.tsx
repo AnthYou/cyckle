@@ -6,7 +6,7 @@ import ManDoor from "@/images/login.svg";
 import Input from "../UI/Input";
 import Select, { SelectOptions } from "../UI/Select";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { signupUser } from "@/store/actions/auth";
+import { SignupParams, signupUser } from "@/store/actions/auth";
 import { messageActions } from "@/store/slices/message-slice";
 import useInput from "@/hooks/use-input";
 
@@ -112,10 +112,10 @@ const Signup = () => {
   const handleForm = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const formParams = {
+    const formParams: SignupParams = {
       user: {
-        first_name: enteredFirstName,
-        last_name: enteredLastName,
+        firstName: enteredFirstName,
+        lastName: enteredLastName,
         email: enteredEmail,
         gender: enteredGender,
         height: enteredHeight,
