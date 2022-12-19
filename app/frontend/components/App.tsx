@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
@@ -6,10 +6,12 @@ import { RootState } from "../store";
 import { checkAuth } from "../store/actions/auth";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import AvailableBikes from "./pages/AvailableBikes";
+import LoadingSpinner from "./UI/LoadingSpinner";
+
+const Home = React.lazy(() => import("./pages/Home"));
+const Signup = React.lazy(() => import("./pages/Signup"));
+const Login = React.lazy(() => import("./pages/Login"));
+const AvailableBikes = React.lazy(() => import("./pages/AvailableBikes"));
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -27,12 +29,14 @@ const App = () => {
       <Navbar />
       {isAuthenticated && <p className="text-center">Hello {currentUser?.firstName}!</p>}
       <main className="container flex-1 mx-auto my-12">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/bikes" element={<AvailableBikes />} />
-          <Route path="/login" element={isAuthenticated ? <Navigate replace to="/" /> : <Login />} />
-          <Route path="/signup" element={isAuthenticated ? <Navigate replace to="/" /> : <Signup />} />
-        </Routes>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/bikes" element={<AvailableBikes />} />
+            <Route path="/login" element={isAuthenticated ? <Navigate replace to="/" /> : <Login />} />
+            <Route path="/signup" element={isAuthenticated ? <Navigate replace to="/" /> : <Signup />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
