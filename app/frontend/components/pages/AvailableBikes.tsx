@@ -3,6 +3,7 @@ import { Bike } from "@/utils/interfaces";
 import useHttp from "@/hooks/use-http";
 import BikeCard from "../bike/Bike";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const AvailableBikes = () => {
   const [bikes, setBikes] = useState<Bike[]>([]);
@@ -26,7 +27,9 @@ const AvailableBikes = () => {
       {error && <p>{error}</p>}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {bikes.map((bike) => (
-          <BikeCard key={bike.id} {...bike} />
+          <Link key={bike.id} to={`/bikes/${bike.id}`}>
+            <BikeCard {...bike} />
+          </Link>
         ))}
       </div>
     </>

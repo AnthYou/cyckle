@@ -12,6 +12,7 @@ const Home = React.lazy(() => import("./pages/Home"));
 const Signup = React.lazy(() => import("./pages/Signup"));
 const Login = React.lazy(() => import("./pages/Login"));
 const AvailableBikes = React.lazy(() => import("./pages/AvailableBikes"));
+const BikeDetails = React.lazy(() => import("./pages/BikeDetails"));
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ const App = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path="/bikes" element={<AvailableBikes />} />
+            <Route path="/bikes/:id" element={<BikeDetails />} />
             <Route path="/login" element={isAuthenticated ? <Navigate replace to="/" /> : <Login />} />
             <Route path="/signup" element={isAuthenticated ? <Navigate replace to="/" /> : <Signup />} />
           </Routes>
