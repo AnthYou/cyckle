@@ -21,7 +21,7 @@ const AvailableBikes = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <div className="spin"></div>}
       {error && <p>{error}</p>}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {bikes.map((bike) => (
