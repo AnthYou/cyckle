@@ -28,6 +28,7 @@ const BikeDetails = () => {
       {error && <p>{error}</p>}
       {bike && (
         <div className="flex flex-col items-center">
+          <img src={bike.photoUrls ? bike.photoUrls[0] : "https://via.placeholder.com/500"} alt={bike.name} className="w-1/2" />
           <h1 className="text-2xl font-bold">{bike.name}</h1>
           <p className="text-xl">{bike.description}</p>
         </div>
