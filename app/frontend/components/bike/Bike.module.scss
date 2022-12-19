@@ -1,0 +1,36 @@
+@import '../../entrypoints/stylesheets/colors';
+
+.Bike {
+  background-color: #fff;
+  color: $main-green;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+}

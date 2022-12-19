@@ -6,11 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Create users + bikes
+# Create users & bikes
+puts '🔥 creating users & bikes...'
 user_count = 0
 bike_count = 0
 
 10.times do |n|
+  user_file = URI.open('https://source.unsplash.com/900x900/?portrait')
+  bike_file = URI.open('https://source.unsplash.com/1600x900/?bicycle')
   user = User.new(
     email: "user#{n + 1}@cyckle.com",
     password: '123456',
@@ -45,6 +48,8 @@ bike_count = 0
     price_per_day_cents: (1000..3000).to_a.sample,
     owner: user
   )
+  user.avatar.attach(io: user_file, filename: 'user.jpg', content_type: 'image/jpg')
+  bike.photos.attach(io: bike_file, filename: 'bike.jpg', content_type: 'image/jpg')
 
   user_count += 1 if user.save
   bike_count += 1 if bike.save
@@ -53,3 +58,30 @@ end
 puts '✅ done!'
 puts "🙋‍♂️ #{user_count} users created."
 puts "🙋🚲 #{bike_count} bikes created."
+
+puts '🔥 creating bookings...'
+# Create bookings & reviews
+booking_count = 0
+review_count = 0
+bike_count.times do |n|
+  bike = Bike.find(n + 1)
+  user = User.find(user_count - n)
+  booking = Booking.new(
+    start_date: Date.today + 1,
+    end_date: Date.today + 3,
+    total_price_cents: bike.price_per_day_cents * 3,
+    bike:,
+    user:
+  )
+  review = Review.new(
+    comment: Faker::Lorem.paragraph(sentence_count: 2),
+    rating: (1..5).to_a.sample,
+    booking:,
+    user:
+  )
+  booking_count += 1 if booking.save
+  review_count += 1 if review.save
+end
+
+puts '✅ done!'
+puts "📅 #{booking_count} bookings created."

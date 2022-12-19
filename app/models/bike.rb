@@ -58,6 +58,8 @@ class Bike < ApplicationRecord
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id', required: true
 
   has_many :bookings
+  has_many :reviews, through: :bookings
+  has_many_attached :photos
 
   geocoded_by      :address
   after_validation :geocode, if: :will_save_change_to_street?
@@ -66,5 +68,9 @@ class Bike < ApplicationRecord
 
   def address
     [street, postal_code, city].compact.join(', ')
+  end
+
+  def average_rating
+    reviews.average(:rating).to_f
   end
 end

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`<AvailableBikes /> > should render correctly 1`] = `
+<div
+  className="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+/>
+`;

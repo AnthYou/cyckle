@@ -28,9 +28,15 @@
 #
 class UserSerializer
   include FastJsonapi::ObjectSerializer
+  set_key_transform :camel_lower
+
   attributes :id, :email, :first_name, :last_name, :gender, :height, :phone, :address, :city, :created_at
 
   attribute :created_date do |user|
     user&.created_at&.strftime('%d/%m/%Y')
+  end
+
+  attribute :photo_url do |user|
+    user.avatar.attached? ? user.avatar.url : nil
   end
 end
