@@ -15,6 +15,7 @@ export interface Bike {
   postalCode: string;
   city: string;
   address: string;
+  averageRating: number;
   latitude: number;
   longitude: number;
   owner: User;
