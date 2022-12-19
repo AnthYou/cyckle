@@ -30,5 +30,15 @@ FactoryBot.define do
     end_date          { Date.today + 15.days }
     user              { association :user }
     bike              { association :bike }
+
+    trait :with_review do
+      transient do
+        rating { 5 }
+      end
+
+      after(:create) do |booking, evaluator|
+        create(:review, booking:, rating: evaluator.rating)
+      end
+    end
   end
 end

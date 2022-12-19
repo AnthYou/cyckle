@@ -69,4 +69,8 @@ class Bike < ApplicationRecord
   def address
     [street, postal_code, city].compact.join(', ')
   end
+
+  def average_rating
+    reviews.average(:rating).to_f
+  end
 end

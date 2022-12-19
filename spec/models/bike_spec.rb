@@ -85,5 +85,16 @@ RSpec.describe Bike, type: :model do
         expect(bike.address).to eq('1 rue du chemin vert, 75011, Paris')
       end
     end
+
+    describe '#average_rating' do
+      before do
+        bike.bookings << create(:booking, :with_review, rating: 2, bike:)
+        bike.bookings << create(:booking, :with_review, rating: 4, bike:)
+      end
+
+      it 'should return the correct average rating' do
+        expect(bike.average_rating).to eq(3)
+      end
+    end
   end
 end
