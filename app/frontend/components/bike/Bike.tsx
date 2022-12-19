@@ -2,7 +2,7 @@ import React from 'react';
 import { Bike } from '@/utils/interfaces';
 import classes from './Bike.module.scss';
 
-const Bike = ({pricePerDayCents, name, city, photoUrls, owner}: Bike) => {
+const Bike = ({pricePerDayCents, name, city, size, photoUrls}: Bike) => {
   const photoUrl = photoUrls ? photoUrls[0] || 'https://via.placeholder.com/500' : 'https://via.placeholder.com/500';
   const price = pricePerDayCents / 100;
 
@@ -10,10 +10,10 @@ const Bike = ({pricePerDayCents, name, city, photoUrls, owner}: Bike) => {
     <div className={classes.Bike}>
       <img src={photoUrl} alt={name} />
       <div>
-        <h3>{name}</h3>
-        <p>{city}</p>
-        <p>{price}€/j</p>
-        <p>{owner.firstName}</p>
+        <h3>{price}€/j</h3>
+        <h4>{name}</h4>
+        <p>Taille {size}</p>
+        <p>📍 {city}</p>
       </div>
     </div>
   )
