@@ -1,6 +1,8 @@
 import React from "react";
 import { Bike } from "@/utils/interfaces";
 import classes from "./Bike.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Bike = ({
   pricePerDayCents,
@@ -21,10 +23,19 @@ const Bike = ({
       <div>
         <h3>{price}€/j</h3>
         <h4>{name}</h4>
-        <p>Taille {size}</p>
+        <p className="font-light">Taille {size}</p>
         <div className="flex justify-between items-center">
-          <p>📍 {city}</p>
-          <p>{averageRating}</p>
+          <p className="font-light">📍 {city}</p>
+          <div className="flex items-center">
+            <p className="mr-1 text-yellow-500">{averageRating.toFixed(1)}</p>
+            {[...Array(5)].map((_, i) => (
+              <FontAwesomeIcon
+                key={i}
+                icon={faStar}
+                className={i < averageRating ? "text-yellow-500" : ""}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
