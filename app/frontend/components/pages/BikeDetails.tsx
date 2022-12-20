@@ -6,6 +6,7 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import BikeShowCard from "../bike/BikeShowCard";
 import BikeReview from "../bike/BikeReview";
 import BikeOwnerCard from "../bike/BikeOwnerCard";
+import BikeFeatures from "../bike/BikeFeatures";
 
 const BikeDetails = () => {
   const params = useParams<{ id: string }>();
@@ -30,24 +31,31 @@ const BikeDetails = () => {
     <>
       {isLoading && <LoadingSpinner />}
       {error && <p>{error}</p>}
-      <button className="mb-5" onClick={() => navigate(-1)}>
+      <button className="mb-5 text-gray-400" onClick={() => navigate(-1)}>
         ↩︎ Revenir aux résultats
       </button>
       {bike && (
         <>
-          <BikeShowCard {...bike} />
-          <div className="my-4">
-            <h2 className="mb-4">Le mot du propriétaire</h2>
-            <BikeOwnerCard {...bike} />
-          </div>
-          <div className="my-4">
-            <h2 className="mb-4">Ce qu'en ont pensé les locataires</h2>
-            {bike.reviews.length === 0 && (
-              <p className="text-center">Aucun avis pour le moment</p>
-            )}
-            {bike.reviews.map((review) => (
-              <BikeReview key={review.id} {...review} />
-            ))}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div>
+              <BikeShowCard {...bike} />
+              <div className="my-4">
+                <h2 className="mb-4">Le mot du propriétaire</h2>
+                <BikeOwnerCard {...bike} />
+              </div>
+              <div className="my-4">
+                <h2 className="mb-4">Ce qu'en ont pensé les locataires</h2>
+                {bike.reviews.length === 0 && (
+                  <p className="text-center">Aucun avis pour le moment</p>
+                )}
+                {bike.reviews.map((review) => (
+                  <BikeReview key={review.id} {...review} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <BikeFeatures {...bike} />
+            </div>
           </div>
         </>
       )}

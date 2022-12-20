@@ -7,7 +7,7 @@ const BikeReview = ({ comment, rating, user }: Review) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
-        <div className="flex flex-col sm:flex-row items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <img
             src={user.photoUrl || `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}`}
             alt={`Photo de ${user.firstName} ${user.lastName}`}

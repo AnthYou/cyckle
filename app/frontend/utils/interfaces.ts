@@ -1,5 +1,20 @@
 export type BikeCategory = "road" | "mountain" | "city" | "gravel" | "touring";
+
 export type BikeGender = "male" | "female" | "unisex";
+
+export const translateBikeGender = (bikeGender: BikeGender) => {
+  switch (bikeGender) {
+    case "male":
+      return "Homme";
+      break;
+    case "female":
+      return "Femme";
+    case "unisex":
+      return "Unisexe";
+    default:
+      break;
+  }
+};
 
 export interface Bike {
   id: number;
@@ -26,6 +41,7 @@ export interface Bike {
   color?: string;
   groupset?: string;
   isElectric?: boolean;
+  batteryLife?: number;
   description?: string;
   weight?: number;
   createdAt?: Date;
@@ -33,6 +49,20 @@ export interface Bike {
 }
 
 export type Gender = "male" | "female" | "non-binary";
+
+export const translateGender = (gender: Gender) => {
+  switch (gender) {
+    case "male":
+      return "Homme";
+      break;
+    case "female":
+      return "Femme";
+    case "non-binary":
+      return "Non-binaire";
+    default:
+      break;
+  }
+};
 
 export interface User {
   id: number;

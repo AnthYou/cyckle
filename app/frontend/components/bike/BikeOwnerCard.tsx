@@ -17,9 +17,9 @@ const BikeOwnerCard = ({ description, owner }: Bike) => {
           `https://ui-avatars.com/api/?name=${owner.firstName}+${owner.lastName}`
         }
         alt={`Photo de ${owner.firstName} ${owner.lastName}`}
-        className="w-full sm:w-1/4 rounded-xl r-4"
+        className="w-full sm:w-1/2 md:w-1/4 rounded-xl object-cover r-4"
       />
-      <div className="w-full">
+      <div className="w-full sm:w-1/2 md:w-3/4">
         <p>{description}</p>
         <ul className="mb-4">
           <li>Taille : {heightToString(owner.height)}</li>
