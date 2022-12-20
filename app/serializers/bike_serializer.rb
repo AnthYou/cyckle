@@ -51,4 +51,8 @@ class BikeSerializer
   attribute :owner do |bike|
     UserSerializer.new(bike.owner).serializable_hash[:data][:attributes]
   end
+
+  attribute :reviews do |bike|
+    ReviewSerializer.new(bike.reviews, is_collection: true).serializable_hash[:data].map { |obj| obj[:attributes] }
+  end
 end

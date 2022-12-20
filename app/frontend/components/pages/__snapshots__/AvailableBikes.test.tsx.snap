@@ -1,7 +1,14 @@
 // Vitest Snapshot v1
 
 exports[`<AvailableBikes /> > should render correctly 1`] = `
-<div
-  className="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
-/>
+[
+  <h1
+    className="mb-7"
+  >
+    Quel vélo allez-vous louer aujourd'hui ?
+  </h1>,
+  <div
+    className="grid sm:grid-cols-2 md:grid-cols-3 gap-4"
+  />,
+]
 `;
