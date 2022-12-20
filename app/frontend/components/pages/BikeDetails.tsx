@@ -30,7 +30,11 @@ const BikeDetails = () => {
       {error && <p>{error}</p>}
       <button onClick={() => navigate(-1)}>Revenir aux résultats</button>
       {bike && (
-        <BikeShowCard {...bike} />
+        <>
+          <BikeShowCard {...bike} />
+          <h2>Le mot du propriétaire</h2>
+          <h2>Ce qu'en ont pensé les locataires</h2>
+        </>
       )}
     </>
   );
