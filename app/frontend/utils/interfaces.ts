@@ -20,6 +20,7 @@ export interface Bike {
   longitude: number;
   owner: User;
   photoUrls?: string[];
+  reviews: Review[];
   model?: string;
   releaseYear?: number;
   color?: string;
@@ -41,7 +42,15 @@ export interface User {
   lastName: string;
   gender: Gender;
   height: number;
-  avatarUrl?: string;
+  photoUrl?: string;
   address?: string;
   city?: string;
+}
+
+export interface Review {
+  id: number;
+  comment: string;
+  rating: number;
+  user: User;
+  createdAt?: Date;
 }
