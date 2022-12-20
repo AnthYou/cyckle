@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useHttp from "@/hooks/use-http";
 import { Bike } from "@/utils/interfaces";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import BikeShowCard from "../bike/BikeShowCard";
 
 const BikeDetails = () => {
   const params = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const [bike, setBike] = useState<Bike>();
   const { isLoading, error, sendRequest: fetchBike } = useHttp();
@@ -26,12 +28,9 @@ const BikeDetails = () => {
     <>
       {isLoading && <LoadingSpinner />}
       {error && <p>{error}</p>}
+      <button onClick={() => navigate(-1)}>Revenir aux résultats</button>
       {bike && (
-        <div className="flex flex-col items-center">
-          <img src={bike.photoUrls ? bike.photoUrls[0] : "https://via.placeholder.com/500"} alt={bike.name} className="w-1/2" />
-          <h1 className="text-2xl font-bold">{bike.name}</h1>
-          <p className="text-xl">{bike.description}</p>
-        </div>
+        <BikeShowCard {...bike} />
       )}
     </>
   );

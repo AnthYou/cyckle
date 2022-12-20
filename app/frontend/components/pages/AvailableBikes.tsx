@@ -23,6 +23,7 @@ const AvailableBikes = () => {
 
   return (
     <>
+      <h1 className="mb-7">Quel vélo allez-vous louer aujourd'hui ?</h1>
       {isLoading && <LoadingSpinner />}
       {error && <p>{error}</p>}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
