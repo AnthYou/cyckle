@@ -44,7 +44,8 @@ class Booking < ApplicationRecord
   # Add a validation: a booking should not be valid
   # if there is already a an accepted booking on the bike between the start_date and the end_date
   def check_if_bike_is_available
-    errors.add(:bike_id, 'is not available') unless bike.bookings.where('start_date >= ? AND end_date <= ?',
-                                                                        start_date, start_date).empty?
+    # TODO: implement this validation
+    # errors.add(:bike_id, 'is not available') unless bike.bookings.where('start_date >= ? AND end_date <= ?',
+                                                                        # start_date, start_date).empty?
   end
 end
